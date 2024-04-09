@@ -33,8 +33,9 @@ function App() {
             <p>Career Quiz v1.0</p>
           </div>
           <div className="content">
-          <button className="button" onClick={() => setStatus(  "basic" )}>Basic Questions</button>
-          <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
+            <button className="button" onClick={() => setStatus(  "basic" )}>Basic Questions</button>
+            
+            <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
           </div>
         </header>
         ) : status === "basic" ? (
