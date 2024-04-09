@@ -13,7 +13,7 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("home");
   
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
@@ -27,16 +27,23 @@ function App() {
   }
   return (
     <div className="App">
-      
-      <header className="homepage">
-        <div className="header">
-          <p>Career Quiz v1.0</p>
-        </div>
-        <div className="content">
-        <button onClick={() => setStatus(  "basic" )}>Basic Questions</button>
-        <button onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
-        </div>
-      </header>
+      <div>
+        {status === "home" ? (
+          <header className="homepage">
+          <div className="header">
+            <p>Career Quiz v1.0</p>
+          </div>
+          <div className="content">
+          <button onClick={() => setStatus(  "basic" )}>Basic Questions</button>
+          <button onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
+          </div>
+        </header>
+        ) : status === "basic" ? (
+          <button onClick={() => setStatus( "home" )}>Homepage</button>
+        ) : status === "detailed" ? (
+          <button onClick={() => setStatus( "home" )}>Homepage</button>
+        ) : null}
+      </div>
 
       <Form>
         <Form.Label>API Key:</Form.Label>
