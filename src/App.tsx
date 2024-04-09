@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
@@ -34,14 +33,14 @@ function App() {
             <p>Career Quiz v1.0</p>
           </div>
           <div className="content">
-          <button onClick={() => setStatus(  "basic" )}>Basic Questions</button>
-          <button onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
+          <button className="button" onClick={() => setStatus(  "basic" )}>Basic Questions</button>
+          <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
           </div>
         </header>
         ) : status === "basic" ? (
-          <button onClick={() => setStatus( "home" )}>Homepage</button>
+          <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
         ) : status === "detailed" ? (
-          <button onClick={() => setStatus( "home" )}>Homepage</button>
+          <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
         ) : null}
       </div>
 
