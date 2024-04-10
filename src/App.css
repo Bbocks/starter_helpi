@@ -8,16 +8,9 @@
 }
 
 .header {
-/*  min-height: 50vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(20px + 5vmin);
-  color: white;*/
-  display: flex;
-  flex-direction: column;
-  font-family: 'Calligraffitti', cursive;
+  font-family: "JetBrains Mono",monospace;
   font-weight: 700;
   font-size: calc(10px + 5vmin);
   position: relative;
@@ -37,7 +30,10 @@
 }
 
 .desc {
-  
+  font-family: "JetBrains Mono",monospace;
+  padding-bottom: 10%;
+  font-size: calc(20px);
+  color: white;
 }
 
 .content {
