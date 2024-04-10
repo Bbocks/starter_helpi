@@ -22,7 +22,7 @@
   font-size: calc(50px + 5vmin);
   position: relative;
   text-shadow: -15px 5px 20px #ced0d3;
-  top: 50%;
+  top: 110px;
   left: 50%;
   transform: translate(-50%,-50%);
   letter-spacing: 0.02em;
