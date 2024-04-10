@@ -30,7 +30,16 @@ function App() {
         {status === "home" ? (
           <header className="homepage">
           <div className="header">
-            <p>Career Quiz v1.0</p>
+            <h1>Career Quiz v1.0</h1>
+          </div>
+          <div className="desc">
+            <p>Feeling lost in the career maze?  
+              Unsure if your current path is the right fit? 
+              Take our interactive career quiz!  
+              With two tracks to choose from, you can get a quick snapshot of your strengths with our basic questions page, or delve deeper with our detailed question set for a more comprehensive analysis.  
+              Based on your answers, we'll provide personalized insights to help you identify your ideal career path,  whether you're just starting out or looking for a fulfilling change.  
+              Don't wait any longer, take control of your future today!
+            </p>
           </div>
           <div className="content">
             <button className="button" onClick={() => setStatus(  "basic" )}>Basic Questions</button>
