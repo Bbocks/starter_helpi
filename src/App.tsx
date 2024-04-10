@@ -48,9 +48,13 @@ function App() {
           </div>
         </header>
         ) : status === "basic" ? (
-          <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
+          <div className="bt-header">
+            <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
+          </div>
         ) : status === "detailed" ? (
-          <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
+          <div className="bt-header">
+            <button className="button" onClick={() => setStatus( "home" )}>Homepage</button>
+          </div>
         ) : null}
       </div>
 
