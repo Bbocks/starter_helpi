@@ -28,8 +28,16 @@ function App() {
     <div className="App">
       <div>
         {status === "home" ? (
-          <header className="homepage">
-            <div className="header">
+          <div className="homepage">
+            <header className='navbar'>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <div className="title">
               <h1>Career Quiz</h1>
             </div>
             <div className="desc">
@@ -46,24 +54,38 @@ function App() {
               
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
-          </header>
-        ) : status === "basic" ? (
-          <div className="bt-header">
-            <button className="button" onClick={() => setStatus( "home" )}>Home</button>
           </div>
+        ) : status === "basic" ? (
+          <header className='navbar'>
+              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
         ) : status === "detailed" ? (
-          <div className="bt-header">
-            <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+          <header className='navbar'>
+              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+        ) : status === "login" ? (
+          <div>
+            <header className='navbar'>
+              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <Form>
+            <Form.Label>API Key:</Form.Label>
+            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+            <br></br>
+            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+            </Form>
           </div>
         ) : null}
       </div>
-
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
     </div>
   );
 }

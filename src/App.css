@@ -7,7 +7,19 @@
   min-height: 100vh;
 }
 
-.header {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+  background: #000000;
+}
+
+.navg {
+  display: flex;
+  justify-content: space-around;
+}
+
+.title {
   display: flex;
   flex-direction: column;
   font-family: "JetBrains Mono",monospace;
@@ -91,8 +103,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.bt-header {
-  padding: 1%;
 }
