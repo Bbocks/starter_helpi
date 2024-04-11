@@ -42,9 +42,9 @@ function App() {
             </p>
           </div>
           <div className="content">
-            <button className="button" onClick={() => setStatus(  "basic" )}>Basic Questions</button>
+            <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
             
-            <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Questions</button>
+            <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
           </div>
         </header>
         ) : status === "basic" ? (
