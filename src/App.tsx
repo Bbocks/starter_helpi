@@ -30,7 +30,7 @@ function App() {
         {status === "home" ? (
           <header className="homepage">
           <div className="header">
-            <h1>Career Quiz v1.0</h1>
+            <h1>Career Quiz</h1>
           </div>
           <div className="desc">
             <p>Feeling lost in the career maze?  
