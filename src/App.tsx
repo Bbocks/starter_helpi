@@ -57,25 +57,31 @@ function App() {
           </div>
         ) : status === "basic" ? (
           <header className='navbar'>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
         ) : status === "detailed" ? (
           <header className='navbar'>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
         ) : status === "login" ? (
           <div>
             <header className='navbar'>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="bar-button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-              <button className="bar-button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              <button className="bar-button" onClick={() => setStatus( "login" )}>Login</button>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
             <Form>
             <Form.Label>API Key:</Form.Label>
