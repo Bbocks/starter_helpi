@@ -32,6 +32,8 @@
 .desc {
   font-family: "JetBrains Mono",monospace;
   padding-bottom: 10%;
+  padding-right: 10%;
+  padding-left: 10%;
   font-size: calc(20px);
   color: white;
 }
