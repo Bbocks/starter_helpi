@@ -14,9 +14,13 @@
   background: #000000;
 }
 
-.navg {
+.navgroup {
   display: flex;
   justify-content: space-around;
+}
+
+.navlog {
+  
 }
 
 .title {

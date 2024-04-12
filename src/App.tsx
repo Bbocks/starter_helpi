@@ -30,12 +30,14 @@ function App() {
         {status === "home" ? (
           <div className="homepage">
             <header className='navbar'>
-              <div className='navg'>
+              <div className='navgroup'>
                 <button className="button" onClick={() => setStatus( "home" )}>Home</button>
                 <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
                 <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
               </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+              <div className='navlog'>
+                <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+              </div>
             </header>
             <div className="title">
               <h1>Career Quiz</h1>
@@ -57,13 +59,13 @@ function App() {
           </div>
         ) : status === "basic" ? (
           <header className='navbar'>
-              <div className='navg'>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-            </header>
+            <div className='navgroup'>
+              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+            </div>
+            <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+          </header>
         ) : status === "detailed" ? (
           <header className='navbar'>
               <div className='navg'>
