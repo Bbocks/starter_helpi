@@ -85,12 +85,13 @@ function App() {
               </div>
               <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
-            <Form>
-            <Form.Label>API Key:</Form.Label>
-            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-            <br></br>
-            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-            </Form>
+            <div className='api'>
+              <Form>
+              <Form.Label>API Key:</Form.Label>
+              <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+              <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+              </Form>
+            </div>
           </div>
         ) : null}
       </div>
