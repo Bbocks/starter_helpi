@@ -35,7 +35,6 @@ function App() {
       </Form>
       <hr></hr>
       <BasicQuestions></BasicQuestions>
-      <hr></hr>
     </div>
   );
 }

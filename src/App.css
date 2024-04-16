@@ -38,6 +38,21 @@
   margin: auto;
 }
 
+.progress_bar_back {
+  height: 24px;
+  width: 100%;
+  background-color: gray;
+  border-radius: 25px;
+  margin-top: 10px
+}
+
+.progress_bar_bar {
+  height:24px;
+  width: 25%;
+  background-color:royalblue;
+  border-radius: 25px;
+}
+
 
 
 @keyframes App-logo-spin {
