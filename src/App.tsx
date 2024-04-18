@@ -105,14 +105,18 @@ function App() {
             </div>
           </div>
         ) : status === "basic" ? (
-          <header className='navbar'>
-            <div className='navgroup'>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-            </div>
-            <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-          </header>
+          <div>
+            <header className='navbar'>
+              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <br></br>
+            <BasicQuestions></BasicQuestions>
+          </div>
         ) : status === "detailed" ? (
           <div>
             <header className='navbar'>
