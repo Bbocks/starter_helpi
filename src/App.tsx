@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import { BasicQuestions } from "./BasicQuestions";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -105,14 +106,18 @@ function App() {
             </div>
           </div>
         ) : status === "basic" ? (
-          <header className='navbar'>
-            <div className='navgroup'>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-            </div>
-            <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-          </header>
+          <div>
+            <header className='navbar'>
+              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <hr></hr>
+            <BasicQuestions></BasicQuestions>
+          </div>
         ) : status === "detailed" ? (
           <header className='navbar'>
               <div className='navg'>
