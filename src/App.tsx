@@ -45,7 +45,6 @@ function updateProgress(progress: number) {
 }
 
 function App() {
-  const [key, setKey] = useState<string>(keyData);
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
@@ -106,20 +105,17 @@ function App() {
             </div>
           </div>
         ) : status === "basic" ? (
+          <header className='navbar'>
+            <div className='navgroup'>
+              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+            </div>
+            <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+          </header>
+        ) : status === "detailed" ? (
           <div>
             <header className='navbar'>
-              <div className='navgroup'>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-            </header>
-            <hr></hr>
-            <BasicQuestions></BasicQuestions>
-          </div>
-        ) : status === "detailed" ? (
-          <header className='navbar'>
               <div className='navg'>
                 <button className="button" onClick={() => setStatus( "home" )}>Home</button>
                 <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
@@ -133,6 +129,7 @@ function App() {
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
+          </div>
         ) : status === "login" ? (
           <div>
             <header className='navbar'>
@@ -151,7 +148,7 @@ function App() {
               </Form>
             </div>
           </div>
-        ) : null}
+        ) : null }
       </div>
     </div>
   );
