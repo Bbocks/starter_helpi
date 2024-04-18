@@ -1,40 +1,158 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+const prevKey = localStorage.getItem(saveKeyData);
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
-  
-  //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+enum Role {
+  User,
+  System
+  } 
+  // default set the role to user, later if prompted allow the user to input admin password
+  let role = Role.User;
+  //allocate an array for user responses, which will eventually be sent to chatGPT
+  let userResponses: string[] = [];
+  //array for detailed questions
+  let detailedQuestions: string[] = ["Question 1:", "Question 2:", "Question 3:"];
+  let currentQuestion: number = 0;
+  let currentResponse: string = '';
+
+  function nextQuestion(){
+    userResponses.push(currentResponse);
+    currentQuestion++;
+    displayQuestion();
   }
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+  function displayQuestion(){
+    return detailedQuestions[currentQuestion];
+  }
+
+function assesmentDescription(){
+  return "This is where the assessment description will be printed";
+}
+
+
+function updateProgress(progress: number) {
+  const progressBar = document.getElementById("progressBar") as HTMLElement;
+  progressBar.style.width = `${progress}%`;
+  nextQuestion();
+}
+
+function App() {
+  const [key, setKey] = useState<string>(keyData);
+  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [status, setStatus] = useState("home");
+  const [progress, setProgress] = useState<number>(0);
+  
+  function handleSubmit() {
+    localStorage.setItem(saveKeyData, JSON.stringify(key));
+    window.location.reload();
+  }
+
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+
+  function increaseProgress() {
+    if (progress < 100) {
+      setProgress(progress + 1);
+    }
+  }
+
+  function decreaseProgress() {
+    if (progress > 0) {
+      setProgress(progress - 1);
+    }
+  }
+
   return (
     <div className="App">
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
-      <hr></hr>
-      <BasicQuestions></BasicQuestions>
+      <div>
+        {status === "home" ? (
+          <div className="homepage">
+            <header className='navbar'>
+              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <div className='navlog'>
+                <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+              </div>
+            </header>
+            <div className="title">
+              <h1>Career Quiz</h1>
+            </div>
+            <div className="desc">
+              <p>Feeling lost in the career maze?  
+                Unsure if your current path is the right fit? 
+                Take our interactive career quiz!  
+                With two tracks to choose from, you can get a quick snapshot of your strengths with our basic questions page, or delve deeper with our detailed question set for a more comprehensive analysis.  
+                Based on your answers, we'll provide personalized insights to help you identify your ideal career path,  whether you're just starting out or looking for a fulfilling change.  
+                Don't wait any longer, take control of your future today!
+              </p>
+            </div>
+            <div className="content">
+              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
+              
+              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+            </div>
+          </div>
+        ) : status === "basic" ? (
+          <div>
+            <header className='navbar'>
+              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <hr></hr>
+            <BasicQuestions></BasicQuestions>
+          </div>
+        ) : status === "detailed" ? (
+          <header className='navbar'>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <p>{assesmentDescription()}</p>
+            <p>{displayQuestion()}</p>
+            <div className="progress">
+            <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+            <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+            <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
+        ) : status === "login" ? (
+          <div>
+            <header className='navbar'>
+              <div className='navg'>
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              </div>
+              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
+            </header>
+            <div className='api'>
+              <Form>
+              <Form.Label>API Key:</Form.Label>
+              <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+              <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+              </Form>
+            </div>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
