@@ -129,7 +129,7 @@ function App() {
             </header>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
-            <div className="progress">
+            <div className="progress"></div>
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
