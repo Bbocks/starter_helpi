@@ -152,7 +152,7 @@ function App() {
               </Form>
             </div>
           </div>
-        ) : null }
+        ) : null}
       </div>
     </div>
   );
