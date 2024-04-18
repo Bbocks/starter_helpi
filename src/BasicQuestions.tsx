@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { render, screen } from "@testing-library/react";
+//import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
 enum Questions {
     Q1 = "Which best describes your ideal work environment?",
@@ -83,10 +83,10 @@ export function BasicQuestions(): JSX.Element {
     const [answer6, setAnswer6] = useState<string>("");
     const [answer7, setAnswer7] = useState<string>("");
     const [submitted, setSubmitted] = useState<number>(0);
-    const keys = Object.keys(Question1);
+    //const keys = Object.keys(Question1);
 
     return (
-        <div style={{backgroundColor: 'DarkGrey', marginTop: '10px'}}>
+        <div style={{backgroundColor: 'DarkGrey', marginTop: '10px',height:'850px'}}>
             <br></br>
             <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                 <div className="progress_bar_back">
@@ -94,26 +94,26 @@ export function BasicQuestions(): JSX.Element {
                 </div><br></br>
             </div>
             {questionNum === 0 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
-                    <p>
+                    <h3>
                         This basic test will present you with 7 different multiple choice questions.<br></br>
                         Please try and answer them as well as you can, do not leave any blank.<br></br>
-                    </p>
+                    </h3>
                     <button onClick={() => setQuestionNum(questionNum + 1)}>
                         Continue
                     </button>
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 1 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="left">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 1: {Questions.Q1}</h3>
                         <Form.Check
                         type="radio"
@@ -169,14 +169,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 2 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 2: {Questions.Q2}</h3>
                         <Form.Check
                         type="radio"
@@ -232,14 +232,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 3 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 3: {Questions.Q3}</h3>
                         <Form.Check
                         type="radio"
@@ -295,14 +295,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 4 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 4: {Questions.Q4}</h3>
                         <Form.Check
                         type="radio"
@@ -358,14 +358,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 5 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 5: {Questions.Q5}</h3>
                         <Form.Check
                         type="radio"
@@ -421,14 +421,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 6 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px',marginTop:'auto'}}>
                         <h3>Question 6: {Questions.Q6}</h3>
                         <Form.Check
                         type="radio"
@@ -484,14 +484,14 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 7 ? (
-                <div style={{height:'80%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
-                    <div className="center">
+                    <div style={{textAlign:'left',marginLeft:'100px'}}>
                         <h3>Question 7: {Questions.Q7}</h3>
                         <Form.Check
                         type="radio"
