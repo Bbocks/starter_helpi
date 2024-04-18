@@ -109,6 +109,27 @@
   color: #61dafb;
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.progress-bar {
+  background-color: rgb(8, 239, 24); /* Change background color to purple */
+  color: black /* Change text color to white */
+}
+
+.decrease-button {
+  background-color: rgb(240, 27, 27);
+}
+
+.increase-button {
+  background-color: rgb(8, 239, 24);
+}
+
 .api {
   display: inline;
 }

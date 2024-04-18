@@ -2,28 +2,75 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+const prevKey = localStorage.getItem(saveKeyData);
 if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
-  const [status, setStatus] = useState("home");
-  
-  //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
+enum Role {
+  User,
+  System
+  } 
+  // default set the role to user, later if prompted allow the user to input admin password
+  let role = Role.User;
+  //allocate an array for user responses, which will eventually be sent to chatGPT
+  let userResponses: string[] = [];
+  //array for detailed questions
+  let detailedQuestions: string[] = ["Question 1:", "Question 2:", "Question 3:"];
+  let currentQuestion: number = 0;
+  let currentResponse: string = '';
+
+  function nextQuestion(){
+    userResponses.push(currentResponse);
+    currentQuestion++;
+    displayQuestion();
   }
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+  function displayQuestion(){
+    return detailedQuestions[currentQuestion];
+  }
+
+function assesmentDescription(){
+  return "This is where the assessment description will be printed";
+}
+
+
+function updateProgress(progress: number) {
+  const progressBar = document.getElementById("progressBar") as HTMLElement;
+  progressBar.style.width = `${progress}%`;
+  nextQuestion();
+}
+
+function App() {
+  const [key, setKey] = useState<string>(keyData);
+  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [status, setStatus] = useState("home");
+  const [progress, setProgress] = useState<number>(0);
+  
+  function handleSubmit() {
+    localStorage.setItem(saveKeyData, JSON.stringify(key));
+    window.location.reload();
+  }
+
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+
+  function increaseProgress() {
+    if (progress < 100) {
+      setProgress(progress + 1);
+    }
+  }
+
+  function decreaseProgress() {
+    if (progress > 0) {
+      setProgress(progress - 1);
+    }
+  }
+
   return (
     <div className="App">
       <div>
@@ -75,6 +122,12 @@ function App() {
               </div>
               <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
+            <p>{assesmentDescription()}</p>
+            <p>{displayQuestion()}</p>
+            <div className="progress">
+            <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+            <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+            <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
         ) : status === "login" ? (
           <div>
             <header className='navbar'>
