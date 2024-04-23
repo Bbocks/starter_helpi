@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
-
+/*
 const OpenAI = require("openai");
 require("dotenv").config();
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+*/
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -121,7 +122,6 @@ function App() {
               </div>
               <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
-            <br></br>
             <BasicQuestions></BasicQuestions>
           </div>
         ) : status === "detailed" ? (

@@ -124,7 +124,9 @@
   width: 100%;
   background-color: gray;
   border-radius: 25px;
-  margin-top: 10px
+  margin-top: 10px;
+  border-style: solid;
+  box-shadow: 0 0 2px 2px #141414
 }
 
 .progress_bar_bar {
@@ -132,6 +134,15 @@
   width: 25%;
   background-color:royalblue;
   border-radius: 25px;
+}
+
+.boxQuestionBack {
+  height: '50%';
+  width: '45%';
+  margin: 'auto';
+  color: 'white';
+  background-color: 'MidnightBlue';
+  border-radius:'25px';
 }
 
 

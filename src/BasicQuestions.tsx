@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 //import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
-
+/*
 const OpenAI = require("openai");
 require("dotenv").config();
-
+*/
 enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
@@ -107,15 +107,15 @@ export function BasicQuestions(): JSX.Element {
     let request = "";
 
     return (
-        <div style={{backgroundColor: 'DarkGrey', marginTop: '10px',height:'850px'}}>
+        <div style={{backgroundColor: '#282c34',height:'850px'}}>
             <br></br>
             <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                 <div className="progress_bar_back">
-                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum}`, borderRadius: '25px'}}></div>
+                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px'}}></div>
                 </div><br></br>
             </div>
             {questionNum === 0 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <h3>
                         This basic test will present you with 7 different multiple choice questions.<br></br>
