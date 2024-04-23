@@ -108,12 +108,16 @@ export function BasicQuestions(): JSX.Element {
 
     return (
         <div style={{backgroundColor: '#282c34',height:'850px'}}>
-            <br></br>
-            <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
-                <div className="progress_bar_back">
-                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px'}}></div>
-                </div><br></br>
-            </div>
+            {questionNum <= 7 ? (
+                <div>
+                    <br></br>
+                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
+                        <div className="progress_bar_back">
+                           <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
+                        </div><br></br>
+                    </div>
+                </div>
+            ) : null }
             {questionNum === 0 ? (
                 <div className="boxQuestionBack">
                     <div className="margin"></div>
@@ -127,7 +131,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 1 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -190,7 +194,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 2 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -253,7 +257,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 3 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -316,7 +320,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 4 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -379,7 +383,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 5 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -442,7 +446,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 6 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -505,7 +509,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 7 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div className="boxQuestionBack">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -569,7 +573,7 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : submitted === 1 && questionNum === 8 ? (
                 <div>
-                    <div style={{height:'100%',width:'100%',backgroundColor:'gray'}}>
+                    <div style={{height:'100%',width:'100%',backgroundColor:'#282c34'}}>
                             <br></br>
                             <button 
                             onClick={() => backButton()}>
@@ -577,7 +581,7 @@ export function BasicQuestions(): JSX.Element {
                             </button>
                             <br></br>
                             <br></br>
-                            <div style={{marginBottom:'10px',margin:'auto',color:'white',backgroundColor:'MidnightBlue',height:'150px',width:'500px',borderRadius:'25px'}}>
+                            <div className="boxQuestionBack">
                                 <br></br>
                                 <h3>Are you sure you want to submit?</h3>
                                 <p>Make sure to review your answers carefully.</p>
@@ -592,7 +596,7 @@ export function BasicQuestions(): JSX.Element {
                         </div>
                 </div>
             ) : submitted === 2 && questionNum === 8 ? (
-                <div className='center'>
+                <div style={{margin: 'auto', color: 'white'}}>
                     <h3>Here are your answers:</h3>
                     <h4>{Questions.Q1}: {answer1}</h4>
                     <h4>{Questions.Q2}: {answer2}</h4>
@@ -613,7 +617,7 @@ export function BasicQuestions(): JSX.Element {
                         ${Questions.Q7}: ${answer7}`
 
                     }
-                    <div style={{margin:'auto',borderWidth:'10px',borderColor:'black',width:'500px',height:'500px'}}></div>
+                    <div style={{margin:'auto',borderWidth:'10px',borderStyle: 'solid',width:'500px',height:'500px'}}></div>
                 </div>
             ) : null }
         </div>
