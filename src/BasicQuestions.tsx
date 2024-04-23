@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 //import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
+//import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from 'openai';
+//import * as readline from 'readline';
+//import * as dotenv from 'dotenv';
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
 */
+
 enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
@@ -63,22 +67,6 @@ enum Question7 {
     O3 = "Planning and constructing new infrastructure for a city",
     O4 = "Help adminster care to the sick"
 }
-/*
-exports.chatReq = async (req, res) => {
-    try {
-      const message = "Which is the capital of Albania?";
-      const response = await OpenAI.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: message }],
-        temperature: 0,
-        max_tokens: 1000,
-      });
-      res.status(200).json(response);
-    } catch (err) {
-      res.status(500).json(err.message);
-    }
-  };
-  */
 
 export function BasicQuestions(): JSX.Element {
     function backButton() {
@@ -103,18 +91,30 @@ export function BasicQuestions(): JSX.Element {
     const [answer6, setAnswer6] = useState<string>("");
     const [answer7, setAnswer7] = useState<string>("");
     const [submitted, setSubmitted] = useState<number>(0);
+    const [response, setRespones] = useState<string>("");
     //const keys = Object.keys(Question1);
-    let request = "";
+    let GPTrequestBasic = "";
+    GPTrequestBasic = `Hello, A client has completed a career quiz and based on the following answers, which job would you think best applies to them:\n 
+    Question: ${Questions.Q1}, Options: ${Question1.O1}, ${Question1.O2}, ${Question1.O3},() ${Question1.O4}, Answer Given: ${answer1}.\n
+    Question: ${Questions.Q2}: Options: ${Question2.O1}, ${Question2.O2}, ${Question2.O3}, ${Question2.O4}, Answer Given: ${answer2}.\n
+    Question: ${Questions.Q3}: Options: ${Question3.O1}, ${Question3.O2}, ${Question3.O3}, ${Question3.O4}, Answer Given: ${answer3}.\n
+    Question: ${Questions.Q4}: Options: ${Question4.O1}, ${Question4.O2}, ${Question4.O3}, ${Question4.O4}, Answer Given: ${answer4}.\n
+    Question: ${Questions.Q5}: Options: ${Question5.O1}, ${Question5.O2}, ${Question5.O3}, ${Question5.O4}, Answer Given: ${answer5}.\n
+    Question: ${Questions.Q6}: Options: ${Question6.O1}, ${Question6.O2}, ${Question6.O3}, ${Question6.O4}, Answer Given: ${answer6}.\n
+    Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.`
+
     /*
-        request = `Hello, A client has completed a career quiz and based on the following answers, which job would you think best applies to them: 
-        ${Questions.Q1}: ${answer1}
-        ${Questions.Q2}: ${answer2}
-        ${Questions.Q3}: ${answer3}
-        ${Questions.Q4}: ${answer4}
-        ${Questions.Q5}: ${answer5}
-        ${Questions.Q6}: ${answer6}
-        ${Questions.Q7}: ${answer7}`
+    function chatGPT(GPTrequestBasic): {
+        response = await OpenAI.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [{ role: "user", content: message }],
+            temperature: 0,
+            max_tokens: 1000,
+        });
+    }
     */
+    
+    
     return (
         <div style={{backgroundColor: '#282c34',height:'850px'}}>
             {questionNum <= 7 ? (
@@ -616,7 +616,8 @@ export function BasicQuestions(): JSX.Element {
                     <h4>{Questions.Q6}: {answer6}</h4>
                     <h4>{Questions.Q7}: {answer7}</h4>
                     <h2>Please wait while chat GPT prepares your answer below:</h2>
-                    <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}></div>
+                    <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}>
+                    </div>
                 </div>
             ) : null }
         </div>
