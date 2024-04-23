@@ -9,18 +9,9 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1%;
   background: #000000;
-}
-
-.navgroup {
-  display: flex;
-  justify-content: space-around;
-}
-
-.navlog {
-
 }
 
 .title {
@@ -159,4 +150,8 @@
 
 .api {
   display: inline;
+}
+
+.footer {
+  
 }
