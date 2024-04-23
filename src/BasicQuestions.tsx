@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 //import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
+
+const OpenAI = require("openai");
+require("dotenv").config();
+
 enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
@@ -59,6 +63,22 @@ enum Question7 {
     O3 = "Planning and constructing new infrastructure for a city",
     O4 = "Help adminster care to the sick"
 }
+/*
+exports.chatReq = async (req, res) => {
+    try {
+      const message = "Which is the capital of Albania?";
+      const response = await OpenAI.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: message }],
+        temperature: 0,
+        max_tokens: 1000,
+      });
+      res.status(200).json(response);
+    } catch (err) {
+      res.status(500).json(err.message);
+    }
+  };
+  */
 
 export function BasicQuestions(): JSX.Element {
     function backButton() {
@@ -84,13 +104,14 @@ export function BasicQuestions(): JSX.Element {
     const [answer7, setAnswer7] = useState<string>("");
     const [submitted, setSubmitted] = useState<number>(0);
     //const keys = Object.keys(Question1);
+    let request = "";
 
     return (
         <div style={{backgroundColor: 'DarkGrey', marginTop: '10px',height:'850px'}}>
             <br></br>
             <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                 <div className="progress_bar_back">
-                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: '25%', borderRadius: '25px'}}></div>
+                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum}`, borderRadius: '25px'}}></div>
                 </div><br></br>
             </div>
             {questionNum === 0 ? (
@@ -581,6 +602,17 @@ export function BasicQuestions(): JSX.Element {
                     <h4>{Questions.Q6}: {answer6}</h4>
                     <h4>{Questions.Q7}: {answer7}</h4>
                     <h2>Please wait while chat GPT prepares your answer below:</h2>
+                    {
+                        request = `Hello, A client has completed a career quiz and based on the following answers, which job would you think best applies to them: 
+                        ${Questions.Q1}: ${answer1}
+                        ${Questions.Q2}: ${answer2}
+                        ${Questions.Q3}: ${answer3}
+                        ${Questions.Q4}: ${answer4}
+                        ${Questions.Q5}: ${answer5}
+                        ${Questions.Q6}: ${answer6}
+                        ${Questions.Q7}: ${answer7}`
+
+                    }
                     <div style={{margin:'auto',borderWidth:'10px',borderColor:'black',width:'500px',height:'500px'}}></div>
                 </div>
             ) : null }
