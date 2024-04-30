@@ -605,9 +605,9 @@ export function BasicQuestions(): JSX.Element {
                         </div>
                 </div>
             ) : submitted === 2 && questionNum === 8 ? (
-                <div style={{height: '100%', color: 'white'}}>
+                <div style={{height: '100%', color: 'white', textAlign: 'left', marginLeft: '35px'}}>
                     <br></br>
-                    <h3>Here are your answers:</h3>
+                    <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
                     <h4>{Questions.Q1}: {answer1}</h4>
                     <h4>{Questions.Q2}: {answer2}</h4>
                     <h4>{Questions.Q3}: {answer3}</h4>
