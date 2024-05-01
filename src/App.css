@@ -14,6 +14,14 @@
   background: #000000;
 }
 
+.api {
+
+}
+
+.footer {
+  margin-top: auto;
+}
+
 .title {
   display: flex;
   flex-direction: column;
@@ -146,12 +154,4 @@
 
 .increase-button {
   background-color: rgb(8, 239, 24);
-}
-
-.api {
-  display: inline;
-}
-
-.footer {
-  
 }
