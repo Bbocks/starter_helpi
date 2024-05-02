@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+/*
+const OpenAI = require("openai");
+require("dotenv").config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+*/
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -52,7 +60,7 @@ function previousQuestion(){
 }
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [key, setKey] = useState<string>(keyData);
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
   
@@ -97,14 +105,9 @@ function App() {
         {status === "home" ? (
           <div className="homepage">
             <header className='navbar'>
-              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
                 <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
                 <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              </div>
-              <div className='navlog'>
-                <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-              </div>
             </header>
             <div className="title">
               <h1>Career Quiz</h1>
@@ -123,29 +126,40 @@ function App() {
               
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
+            <footer className='footer'>
+              <div className='api'>
+                <Form>
+                <Form.Label className='desc'>API Key:</Form.Label>
+                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                </Form>
+              </div>
+            </footer>
           </div>
         ) : status === "basic" ? (
           <div>
             <header className='navbar'>
-              <div className='navgroup'>
+                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
                 <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
                 <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
-            <br></br>
             <BasicQuestions></BasicQuestions>
+            <footer className='footer'>
+              <div className='api'>
+                <Form>
+                <Form.Label className='desc'>API Key:</Form.Label>
+                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                </Form>
+              </div>
+            </footer>
           </div>
         ) : status === "detailed" ? (
           <div>
             <header className='navbar'>
-              <div className='navg'>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
                 <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
+                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
                 <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-              </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
@@ -155,27 +169,18 @@ function App() {
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); readInput(); }}>Continue</Button>
-          
-          </div>
-        ) : status === "login" ? (
-          <div>
-            <header className='navbar'>
-              <div className='navg'>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+
+            <footer className='footer'>
+              <div className='api'>
+                <Form>
+                <Form.Label className='desc'>API Key:</Form.Label>
+                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                </Form>
               </div>
-              <button className="button" onClick={() => setStatus( "login" )}>Login</button>
-            </header>
-            <div className='api'>
-              <Form>
-              <Form.Label>API Key:</Form.Label>
-              <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-              <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-              </Form>
-            </div>
+            </footer>
           </div>
-        ) : null}
+        ) : null }
       </div>
     </div>
   );
