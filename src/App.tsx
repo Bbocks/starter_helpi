@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+/*
+const OpenAI = require("openai");
+require("dotenv").config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+*/
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -45,7 +53,7 @@ function updateProgress(progress: number) {
 }
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [key, setKey] = useState<string>(keyData);
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
   
@@ -115,7 +123,6 @@ function App() {
                 <button className="button" onClick={() => setStatus( "home" )}>Home</button>
                 <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </header>
-            <br></br>
             <BasicQuestions></BasicQuestions>
             <footer className='footer'>
               <div className='api'>
@@ -150,7 +157,7 @@ function App() {
               </div>
             </footer>
           </div>
-        ) : null}
+        ) : null }
       </div>
     </div>
   );
