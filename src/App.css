@@ -19,7 +19,8 @@
 }
 
 .footer {
-  margin-top: auto;
+  margin-bottom: auto;
+  background-color: #000000;
 }
 
 .title {
@@ -178,10 +179,6 @@
 
 .increase-button {
   background-color: rgb(8, 239, 24);
-}
-
-.api {
-  display: inline;
 }
 
 .square-input {
