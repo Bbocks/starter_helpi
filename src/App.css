@@ -9,18 +9,17 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1%;
   background: #000000;
 }
 
-.navgroup {
-  display: flex;
-  justify-content: space-around;
+.api {
+
 }
 
-.navlog {
-
+.footer {
+  margin-top: auto;
 }
 
 .title {
@@ -155,8 +154,4 @@
 
 .increase-button {
   background-color: rgb(8, 239, 24);
-}
-
-.api {
-  display: inline;
 }
