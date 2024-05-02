@@ -144,13 +144,13 @@ function App() {
           </div>
         ) : null }
         <footer className='footer'>
-              <div className='api'>
-                <Form>
-                <Form.Label className='desc'>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                </Form>
-              </div>
+            <div className='api'>
+              <Form>
+              <Form.Label className='API-font'>API Key:</Form.Label>
+              <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+              <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+              </Form>
+            </div>
         </footer>
       </div>
     </div>
