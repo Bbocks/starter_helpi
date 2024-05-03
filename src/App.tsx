@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+//import { OpenAIApi, Configuration, CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
+/*
+const OpenAI = require("openai");
+require("dotenv").config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+*/
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -45,7 +54,7 @@ function updateProgress(progress: number) {
 }
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
+  const [key, setKey] = useState<string>(keyData);
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
   
@@ -55,7 +64,7 @@ function App() {
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
+    localStorage.setItem(saveKeyData, event.target.value);
   }
 
 

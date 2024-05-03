@@ -59,6 +59,16 @@
   justify-content: space-around;
 }
 
+.boxQuestionBack {
+  height: 50%;
+  width: 45%;
+  margin: auto;
+  color: white;
+  background-color: MidnightBlue;
+  border-radius: 25px;
+  box-shadow: 0 0 5px 5px #141414;
+}
+
 /* CSS */
 .button {
   align-items: center;
@@ -133,8 +143,6 @@
   background-color:royalblue;
   border-radius: 25px;
 }
-
-
 
 @keyframes App-logo-spin {
   from {
