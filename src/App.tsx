@@ -65,6 +65,7 @@ function App() {
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     localStorage.setItem(saveKeyData, event.target.value);
+    setKey(event.target.value);
   }
 
 
@@ -123,7 +124,6 @@ function App() {
               </div>
               <button className="button" onClick={() => setStatus( "login" )}>Login</button>
             </header>
-            <br></br>
             <BasicQuestions></BasicQuestions>
           </div>
         ) : status === "detailed" ? (
