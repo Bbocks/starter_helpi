@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background: #282c34;
+  background-size: contain;
+  height: 100vh;
 }
 
 .homepage {
@@ -14,10 +16,6 @@
   background: #000000;
 }
 
-.api {
-
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -25,7 +23,6 @@
   background-color: #000000;
   padding: 1%;
   display: flex;
-  justify-content: left;
 }
 
 .title {
@@ -52,15 +49,10 @@
 
 .desc {
   font-family: "JetBrains Mono",monospace;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   padding-right: 10%;
   padding-left: 10%;
   font-size: 20px;
-  color: white;
-}
-
-.API-font {
-  font-family: "JetBrains Mono",monospace;
   color: white;
 }
 
@@ -69,7 +61,7 @@
   justify-content: space-around;
 }
 
-/* CSS */
+/* CSS */ 
 .button {
   align-items: center;
   appearance: none;
@@ -195,4 +187,14 @@
   width: 300px;
   height: 300px;
   text-shadow: #3c4fe0;
+}
+
+.API-font {
+  font-family: "JetBrains Mono",monospace;
+  color: white;
+}
+
+.Submit-Button {
+  font-family: "JetBrains Mono",monospace;
+  
 }

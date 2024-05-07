@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 /*
 const OpenAI = require("openai");
@@ -102,11 +102,11 @@ function App() {
   return (
     <div className="App">
       <div>
-          <header className='navbar'>
-              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-              <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-          </header>
+        <header className='navbar'>
+          <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
+          <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+          <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+        </header>
         {status === "home" ? (
           <div className="homepage">
             <div className="title">
@@ -132,7 +132,7 @@ function App() {
             <BasicQuestions></BasicQuestions>
           </div>
         ) : status === "detailed" ? (
-          <div>
+          <div className='det'>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
             <input type="text" id="myInput" placeholder="Enter text" style={{width: 300, height: 300}}></input>
@@ -144,13 +144,28 @@ function App() {
           </div>
         ) : null }
         <footer className='footer'>
-            <div className='api'>
-              <Form>
-              <Form.Label className='API-font'>API Key:</Form.Label>
-              <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-              <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-              </Form>
-            </div>
+        <Container>
+            <Row>
+                <Col>
+                  <div className='api'>
+                    <Form>
+                    <Form.Label className='API-font'>API Key:</Form.Label>
+                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                    </Form>
+                  </div>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Brett Bockstein</p>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Phillip Colburn</p>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Miles Gaydos</p>
+                </Col>
+            </Row>
+        </Container>
         </footer>
       </div>
     </div>
