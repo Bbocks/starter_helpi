@@ -207,24 +207,6 @@ a:hover {
     transform: rotate(360deg);
   }
 }
-.progress-bar {
-  background-color: rgb(8, 239, 24); /* Change background color to purple */
-  color: black /* Change text color to white */
-}
-
-.decrease-button {
-  background-color: rgb(240, 27, 27);
-}
-
-.increase-button {
-  background-color: rgb(8, 239, 24);
-}
-
-.square-input {
-  width: 300px;
-  height: 300px;
-  text-shadow: #3c4fe0;
-}
 
 .API-font {
   font-family: "JetBrains Mono",monospace;
@@ -234,4 +216,54 @@ a:hover {
 .Submit-Button {
   font-family: "JetBrains Mono",monospace;
   
+}
+
+.det {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.asses-desc {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  text-align: center;
+  line-height: 10px;
+  color: white;
+  border-radius: 25px;
+  width: 25%;
+  background-color:royalblue;
+}
+
+.Progress-Button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Progress-Button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.progress-button {
+  margin-right: 10px;
 }
