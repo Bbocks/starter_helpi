@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 import { text } from 'stream/consumers';
 /*
@@ -110,13 +110,13 @@ function App() {
   return (
     <div className="App">
       <div>
+        <header className='navbar'>
+          <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
+          <button className="button" onClick={() => setStatus( "home" )}>Home</button>
+          <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+        </header>
         {status === "home" ? (
           <div className="homepage">
-            <header className='navbar'>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-            </header>
             <div className="title">
               <h1>Career Quiz</h1>
             </div>
@@ -134,41 +134,13 @@ function App() {
               
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
-            <footer className='footer'>
-              <div className='api'>
-                <Form>
-                <Form.Label className='desc'>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                </Form>
-              </div>
-            </footer>
           </div>
         ) : status === "basic" ? (
           <div>
-            <header className='navbar'>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-            </header>
             <BasicQuestions></BasicQuestions>
-            <footer className='footer'>
-              <div className='api'>
-                <Form>
-                <Form.Label className='desc'>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                </Form>
-              </div>
-            </footer>
           </div>
         ) : status === "detailed" ? (
-          <div>
-            <header className='navbar'>
-                <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>  
-                <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-                <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
-            </header>
+          <div className='det'>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
             <p>{ControlledTextarea()}</p>
@@ -176,19 +148,32 @@ function App() {
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); }}>Continue</Button>
- 
-
-            <footer className='footer'>
-              <div className='api'>
-                <Form>
-                <Form.Label className='desc'>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                </Form>
-              </div>
-            </footer>
           </div>
         ) : null }
+        <footer className='footer'>
+        <Container>
+            <Row>
+                <Col>
+                  <div className='api'>
+                    <Form>
+                    <Form.Label className='API-font'>API Key:</Form.Label>
+                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+                    </Form>
+                  </div>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Brett Bockstein</p>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Phillip Colburn</p>
+                </Col>
+                <Col>
+                  <p style={{color:"red"}}>Miles Gaydos</p>
+                </Col>
+            </Row>
+        </Container>
+        </footer>
       </div>
     </div>
   );
