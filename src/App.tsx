@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+import { text } from 'stream/consumers';
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
@@ -75,6 +76,9 @@ function App() {
 
 
   function increaseProgress() {
+    const textareaValue = (document.querySelector('textarea[name="Answer here"]') as HTMLTextAreaElement).value;
+
+    userResponses.push(textareaValue);
     if (progress < 100) {
       setProgress(progress + 25);
     }
@@ -82,6 +86,7 @@ function App() {
   }
 
   function decreaseProgress() {
+    userResponses.pop();
     if (progress > 0) {
       setProgress(progress - 25);
     }
@@ -89,15 +94,18 @@ function App() {
   }
 
 
-  //this function should read from text area and assign them to the userResponse array
-  function readInput(){
-    const inputElement = document.getElementById("myInput") as HTMLInputElement;
-    if (inputElement) {
-      const inputValue = inputElement.value;
-    console.log("Input value:", inputValue);
-    userResponses[currentQuestion] = inputValue;
+
+  function ControlledTextarea() {
+  
+    return (
+      <div>
+        <textarea
+          name="Answer here"
+        />
+      </div>
+    );
   }
-  }
+  
 
   return (
     <div className="App">
@@ -135,12 +143,11 @@ function App() {
           <div className='det'>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
-            <input type="text" id="myInput" placeholder="Enter text" style={{width: 300, height: 300}}></input>
-
+            <p>{ControlledTextarea()}</p>
             <div className="progress"></div>
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
-            <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); readInput(); }}>Continue</Button>
+            <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); }}>Continue</Button>
           </div>
         ) : null }
         <footer className='footer'>
