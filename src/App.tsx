@@ -96,11 +96,21 @@ function App() {
 
 
   function ControlledTextarea() {
+    const [currentResponse, setCurrentResponse] = useState<string>('');
+  
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setCurrentResponse(event.target.value);
+      userResponses.pop();
+      userResponses.push(currentResponse);
+    };
   
     return (
       <div>
         <textarea
+          id="input"
           name="Answer here"
+          value={currentResponse}
+          onChange={handleChange}
         />
       </div>
     );
