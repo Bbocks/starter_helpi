@@ -3,6 +3,7 @@ import './App.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 import { text } from 'stream/consumers';
+import git from "./GitHub.png";
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
@@ -151,28 +152,33 @@ function App() {
           </div>
         ) : null }
         <footer className='footer'>
-        <Container>
-            <Row>
-                <Col>
-                  <div className='api'>
-                    <Form>
-                    <Form.Label className='API-font'>API Key:</Form.Label>
-                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                    </Form>
-                  </div>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Brett Bockstein</p>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Phillip Colburn</p>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Miles Gaydos</p>
-                </Col>
-            </Row>
-        </Container>
+          <div>
+            <Form>
+            <Form.Label className='API-font'>API Key:</Form.Label>
+            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+            </Form>
+          </div>
+          <div className='names'>
+            <p className='name'><a href='https://github.com/Bbocks'>Brett Bockstein</a></p> 
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
+            <p className='name'><a href='https://github.com/Bbocks'>Phillip Colburn</a></p>
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
+            <p className='name'><a href='https://github.com/Bbocks'>Miles Gaydos</a></p>
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
+          </div>
         </footer>
       </div>
     </div>
