@@ -40,6 +40,7 @@
   margin-right: 10px;
   margin-left: 50px;
   color: white;
+
 }
 
 .git-img {
@@ -47,6 +48,18 @@
   width: 30px;
   height: 30px;
   
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: #3c4fe0;
 }
 
 .title {
