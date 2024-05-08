@@ -173,7 +173,7 @@ function App() {
               alt='Git Logo'
               className='git-img'
             />
-            <p className='name'><a href='https://github.com/Bbocks'>Phillip Colburn</a></p>
+            <p className='name'><a href='https://github.com/bbatts24'>Phillip Colburn</a></p>
             <img
               src={git}
               alt='Git Logo'
