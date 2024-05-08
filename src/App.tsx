@@ -65,6 +65,7 @@ function App() {
   const [key, setKey] = useState<string>(keyData);
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
+  const [currentResponse, setCurrentResponse] = useState<string>('');
   
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -77,9 +78,7 @@ function App() {
 
 
   function increaseProgress() {
-    const textareaValue = (document.querySelector('textarea[name="Answer here"]') as HTMLTextAreaElement).value;
 
-    userResponses.push(textareaValue);
     if (progress < 100) {
       setProgress(progress + 25);
     }
@@ -87,7 +86,6 @@ function App() {
   }
 
   function decreaseProgress() {
-    userResponses.pop();
     if (progress > 0) {
       setProgress(progress - 25);
     }
@@ -97,7 +95,6 @@ function App() {
 
 
   function ControlledTextarea() {
-    const [currentResponse, setCurrentResponse] = useState<string>('');
   
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       setCurrentResponse(event.target.value);
@@ -158,7 +155,7 @@ function App() {
             <div className="progress"></div>
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
-            <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); }}>Continue</Button>
+            <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
           </div>
         ) : null }
         <footer className='footer'>
@@ -182,7 +179,7 @@ function App() {
               alt='Git Logo'
               className='git-img'
             />
-            <p className='name'><a href='https://github.com/Bbocks'>Miles Gaydos</a></p>
+            <p className='name'><a href='https://github.com/mdgaydos'>Miles Gaydos</a></p>
             <img
               src={git}
               alt='Git Logo'
