@@ -162,16 +162,6 @@
   }
 }
 
-.API-font {
-  font-family: "JetBrains Mono",monospace;
-  color: white;
-}
-
-.Submit-Button {
-  font-family: "JetBrains Mono",monospace;
-  
-}
-
 .det {
   max-width: 600px;
   margin: 0 auto;
@@ -233,6 +223,18 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
+}
+
+.API-font {
+  font-family: "JetBrains Mono",monospace;
+  color: white;
+}
+
+.Submit-Button {
+  font-family: "JetBrains Mono",monospace;
+  background-color: #3c4fe0;
+  color: white;
+  font-size: 14px;
 }
 
 .names {
