@@ -83,7 +83,6 @@ function App() {
 
   return (
     <div className="App">
-      <div>
         {status === "home" ? (
           <div className="homepage">
             <header className='navbar'>
@@ -162,7 +161,6 @@ function App() {
             </div>
           </div>
         ) : null}
-      </div>
     </div>
   );
 }
