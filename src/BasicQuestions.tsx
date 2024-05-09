@@ -129,10 +129,9 @@ export function BasicQuestions(): JSX.Element {
 
     return (
         <div>
-            <div style={{backgroundColor:'#282c34', height:'850px'}}>
+            <div style={{backgroundColor:'white', height:'850px'}}>
             {questionNum <= 7 ? (
                 <div>
-                    <br></br>
                     <p>{localStorage.getItem("saveKeyData")}</p>
                     <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                         <div className="progress_bar_back">
@@ -142,13 +141,13 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : null }
             {questionNum === 0 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <h3>
                         This basic test will present you with 7 different multiple choice questions.<br></br>
                         Please try and answer them as well as you can, do not leave any blank.<br></br>
                     </h3>
-                    <button onClick={() => setQuestionNum(questionNum + 1)}>
+                    <button className="button" onClick={() => setQuestionNum(questionNum + 1)}>
                         Continue
                     </button>
                     <div className="margin"></div>

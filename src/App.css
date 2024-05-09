@@ -13,6 +13,9 @@
   padding: 1%;
   background: #000000;
 }
+.monk {
+  background: rgb(32, 32, 32)
+}
 
 .navgroup {
   display: flex;
@@ -132,7 +135,7 @@
 .progress_bar_back {
   height: 24px;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(32, 32, 32);
   border-radius: 25px;
   margin-top: 10px
 }
