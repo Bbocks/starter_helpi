@@ -19,15 +19,6 @@
   background: rgb(32, 32, 32)
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #000000;
-  padding: 1%;
-  display: flex;
-}
-
 .title {
   display: flex;
   flex-direction: column;
@@ -233,23 +224,68 @@
     transform: rotate(360deg);
   }
 }
+
+.det {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.asses-desc {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.progress {
+  height: 10px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
 .progress-bar {
-  background-color: rgb(8, 239, 24); /* Change background color to purple */
-  color: black /* Change text color to white */
+  height: 100%;
+  text-align: center;
+  line-height: 10px;
+  color: white;
+  border-radius: 25px;
+  width: 25%;
+  background-color:royalblue;
 }
 
-.decrease-button {
-  background-color: rgb(240, 27, 27);
+.Progress-Button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.increase-button {
-  background-color: rgb(8, 239, 24);
+.Progress-Button:hover {
+  background-color: #0056b3;
+  color: white;
 }
 
-.square-input {
-  width: 300px;
-  height: 300px;
-  text-shadow: #3c4fe0;
+.progress-button {
+  margin-right: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  padding-left: 1%;
+  padding-right: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .API-font {
@@ -259,5 +295,53 @@
 
 .Submit-Button {
   font-family: "JetBrains Mono",monospace;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  padding: 0 10px;
+  background-color: #0070d2;
+  border-radius: 0.25rem;
+  border: 1px solid #0070d2;
+  color: #fff;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: center;
+  :hover {
+      background-color: #005fb2;  
+      border-color: #005fb2;
+  } 
+}
+
+.names {
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-family: "JetBrains Mono",monospace;
+  margin-right: 10px;
+  margin-left: 50px;
+  color: white;
+
+}
+
+.git-img {
+  margin-top: 12px;
+  width: 30px;
+  height: 30px;
   
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: #3c4fe0;
 }
