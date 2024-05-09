@@ -98,10 +98,11 @@
 }
 
 @keyframes gradiate {
-  25% {background-color: white}
-  50% {background-color: black}
-  75% {background-color: black}
-  100% {background-color: white}
+  0% {background-color: #282c34;}
+  25% {background-color: purple}
+  50% {background-color: palevioletred}
+  75% {background-color: yellowgreen}
+  100% {background-color: yellow}
 }
 
 .anim {
