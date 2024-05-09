@@ -117,7 +117,7 @@ export function BasicQuestions(): JSX.Element {
     
     
     return (
-        <div style={{backgroundColor: '#282c34',height:'850px'}}>
+        <div style={{backgroundColor: '#282c34',height:'100vh'}}>
             {questionNum <= 7 ? (
                 <div>
                     <br></br>
@@ -606,18 +606,20 @@ export function BasicQuestions(): JSX.Element {
                         </div>
                 </div>
             ) : submitted === 2 && questionNum === 8 ? (
-                <div style={{height: '100%', color: 'white', textAlign: 'left', marginLeft: '35px'}}>
-                    <br></br>
-                    <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
-                    <h4>{Questions.Q1}: {answer1}</h4>
-                    <h4>{Questions.Q2}: {answer2}</h4>
-                    <h4>{Questions.Q3}: {answer3}</h4>
-                    <h4>{Questions.Q4}: {answer4}</h4>
-                    <h4>{Questions.Q5}: {answer5}</h4>
-                    <h4>{Questions.Q6}: {answer6}</h4>
-                    <h4>{Questions.Q7}: {answer7}</h4>
-                    <h2>Please wait while chat GPT prepares your answer below:</h2>
-                    <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}>
+                <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
+                    <div>
+                        <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
+                        <h4>{Questions.Q1}<br/>- {answer1}</h4>
+                        <h4>{Questions.Q2}<br/>- {answer2}</h4>
+                        <h4>{Questions.Q3}<br/>- {answer3}</h4>
+                        <h4>{Questions.Q4}<br/>- {answer4}</h4>
+                        <h4>{Questions.Q5}<br/>- {answer5}</h4>
+                        <h4>{Questions.Q6}<br/>- {answer6}</h4>
+                        <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                    </div>
+                    <div>
+                        <h2>Please wait while chat GPT prepares your answer below:</h2>
+                        <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}></div>
                     </div>
                 </div>
             ) : null }

@@ -16,52 +16,6 @@
   background: #000000;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #000000;
-  padding-left: 1%;
-  padding-right: 1%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.names {
-  margin-right: 20px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.name {
-  font-family: "JetBrains Mono",monospace;
-  margin-right: 10px;
-  margin-left: 50px;
-  color: white;
-
-}
-
-.git-img {
-  margin-top: 12px;
-  width: 30px;
-  height: 30px;
-  
-}
-
-a:link {
-  color: white;
-}
-
-a:visited {
-  color: white;
-}
-
-a:hover {
-  color: #3c4fe0;
-}
-
 .title {
   display: flex;
   flex-direction: column;
@@ -266,4 +220,50 @@ a:hover {
 
 .progress-button {
   margin-right: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  padding-left: 1%;
+  padding-right: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.names {
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name {
+  font-family: "JetBrains Mono",monospace;
+  margin-right: 10px;
+  margin-left: 50px;
+  color: white;
+
+}
+
+.git-img {
+  margin-top: 12px;
+  width: 30px;
+  height: 30px;
+  
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  color: #3c4fe0;
 }
