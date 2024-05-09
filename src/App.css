@@ -15,6 +15,9 @@
   padding: 1%;
   background: #000000;
 }
+.monk {
+  background: rgb(32, 32, 32)
+}
 
 .footer {
   position: fixed;
@@ -61,7 +64,17 @@
   justify-content: space-around;
 }
 
-/* CSS */ 
+.boxQuestionBack {
+  height: 50%;
+  width: 45%;
+  margin: auto;
+  color: white;
+  background-color: MidnightBlue;
+  border-radius: 25px;
+  box-shadow: 0 0 5px 5px #141414;
+}
+
+/* CSS */
 .button {
   align-items: center;
   appearance: none;
@@ -91,6 +104,56 @@
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+}
+
+@keyframes gradiate {
+  25% {background-color: white}
+  50% {background-color: black}
+  75% {background-color: black}
+  100% {background-color: white}
+}
+
+.anim {
+  width: 100%;
+  height: 850px;
+  background-color: white;
+  animation-name: gradiate;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+}
+
+.slide:hover,
+.slide:focus {
+  box-shadow: inset 6.5em 0 0 0 var(--hover);
+  color: white
+}
+
+.dot {
+  height: 250px;
+  width: 250px;
+  background-color: #e78122;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 0px;
+}
+
+.qBox {
+  height: 50%;
+  width: 45%;
+  margin: auto;
+  color: #e3e3e3;
+  background-color: rgb(32 32 32);
+  box-shadow: 10px 10px black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.newB:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.newB:Hover {
+  transition: color 1s;
+  color: 10px 10px white;
 }
 
 .button:focus {
@@ -124,7 +187,7 @@
 .progress_bar_back {
   height: 24px;
   width: 100%;
-  background-color: gray;
+  background-color: rgb(32, 32, 32);
   border-radius: 25px;
   margin-top: 10px;
   border-style: solid;

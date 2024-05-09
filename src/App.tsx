@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+//import { OpenAIApi, Configuration, CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
 import { text } from 'stream/consumers';
+
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
@@ -71,6 +73,7 @@ function App() {
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
+    localStorage.setItem(saveKeyData, event.target.value);
     setKey(event.target.value);
   }
 
