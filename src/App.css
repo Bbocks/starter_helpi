@@ -98,7 +98,7 @@
 }
 
 @keyframes gradiate {
-  0% {background-color: #282c34;}
+  0% {background-color: yellow}
   25% {background-color: purple}
   50% {background-color: palevioletred}
   75% {background-color: yellowgreen}
