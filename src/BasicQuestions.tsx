@@ -129,7 +129,7 @@ export function BasicQuestions(): JSX.Element {
 
     return (
         <div>
-            <div style={{backgroundColor:'white', height:'850px'}}>
+            <div style={{backgroundColor:'white', height:'850px', backgroundImage: 'linear-gradient(white,black)'}}>
             {questionNum <= 7 ? (
                 <div>
                     <p>{localStorage.getItem("saveKeyData")}</p>
@@ -141,19 +141,19 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : null }
             {questionNum === 0 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black',fontFamily: 'Arial, Helvetica, sans-serif'}}>
                     <div className="margin"></div>
                     <h3>
                         This basic test will present you with 7 different multiple choice questions.<br></br>
                         Please try and answer them as well as you can, do not leave any blank.<br></br>
                     </h3>
-                    <button className="button" onClick={() => setQuestionNum(questionNum + 1)}>
+                    <button onClick={() => setQuestionNum(questionNum + 1)}>
                         Continue
                     </button>
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 1 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -216,7 +216,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 2 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -279,7 +279,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 3 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -342,7 +342,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 4 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -405,7 +405,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 5 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -468,7 +468,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 6 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -531,7 +531,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 7 ? (
-                <div style={{height:'50%',width:'45%',margin:'auto',color:'white',backgroundColor:'MidnightBlue',borderRadius:'25px',boxShadow: '0 0 5px 5px #141414'}}>
+                <div style={{height:'50%',width:'45%',margin:'auto',color:'#e3e3e3',backgroundColor:'rgb(32, 32, 32)',boxShadow:'10px 10px black'}}>
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
