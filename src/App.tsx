@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
-import { text } from 'stream/consumers';
+//import { text } from 'stream/consumers';
 import git from "./GitHub.png";
 /*
 const OpenAI = require("openai");
@@ -25,7 +25,7 @@ enum Role {
   System
   } 
   // default set the role to user, later if prompted allow the user to input admin password
-  let role = Role.User;
+  //let role = Role.User;
   //allocate an array for user responses, which will eventually be sent to chatGPT
   let userResponses: string[] = ["answer to question 1","answer to question 2","answer to question 3", "answer to question 4"];
   //array for detailed questions
@@ -49,11 +49,11 @@ function assesmentDescription(){
 }
 
 
-function updateProgress(progress: number) {
+/*function updateProgress(progress: number) {
   const progressBar = document.getElementById("progressBar") as HTMLElement;
   progressBar.style.width = `${progress}%`;
   nextQuestion();
-}
+}*/
 
 function previousQuestion(){
   currentQuestion--;
