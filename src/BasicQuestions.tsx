@@ -126,14 +126,14 @@ export function BasicQuestions(): JSX.Element {
         doChat = false;
         chat();
     }
-
+    //style={{backgroundColor:'white', height:'850px', backgroundImage: 'linear-gradient(white,black)'}}
     return (
         <div>
             <div className="anim">
             {questionNum <= 7 ? (
                 <div>
                     <p>{localStorage.getItem("saveKeyData")}</p>
-                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
+                    <div style={{marginLeft: '20px', marginRight: '20px'}}>
                         <div className="progress_bar_back">
                     <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
                         </div><br></br>
@@ -595,7 +595,7 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : submitted === 1 && questionNum === 8 ? (
                 <div>
-                    <div style={{height:'100%',width:'100%',backgroundColor:'gray'}}>
+                    <div style={{height:'100%',width:'100%'}}>
                             <br></br>
                             <button 
                             onClick={() => backButton()}>
@@ -603,7 +603,7 @@ export function BasicQuestions(): JSX.Element {
                             </button>
                             <br></br>
                             <br></br>
-                            <div style={{marginBottom:'10px',margin:'auto',color:'white',backgroundColor:'MidnightBlue',height:'150px',width:'500px',borderRadius:'25px'}}>
+                            <div className="qBox">
                                 <br></br>
                                 <h3>Are you sure you want to submit?</h3>
                                 <p>Make sure to review your answers carefully.</p>

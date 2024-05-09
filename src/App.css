@@ -105,15 +105,16 @@
 }
 
 @keyframes gradiate {
-  25% {background-color: white}
-  50% {background-color: black}
-  75% {background-color: black}
-  100% {background-color: white}
+  0% {background-color: orangered}
+  25% {background-color: yellow}
+  50% {background-color: purple}
+  75% {background-color: yellowgreen}
+  100% {background-color: orangered}
 }
 
 .anim {
-  width: 100%;
-  height: 850px;
+  margin-top: 0px;
+  height: 800px;
   background-color: white;
   animation-name: gradiate;
   animation-duration: 25s;
