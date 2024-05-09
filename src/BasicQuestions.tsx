@@ -608,7 +608,7 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : submitted === 1 && questionNum === 8 ? (
                 <div>
-                    <div style={{height:'100%',width:'100%',backgroundColor:'#282c34'}}>
+                    <div style={{height:'100%',width:'100%'}}>
                             <br></br>
                             <button 
                             onClick={() => backButton()}>
