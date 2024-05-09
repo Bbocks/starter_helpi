@@ -3,6 +3,7 @@ import React, { useState } from "react";
 //import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
 //import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from 'openai';
+import OpenAI from "openai";
 //import * as readline from 'readline';
 //import * as dotenv from 'dotenv';
 /*
@@ -69,7 +70,15 @@ enum Question7 {
     O4 = "Help adminster care to the sick"
 }
 
+
 export function BasicQuestions(): JSX.Element {
+
+    const client = new OpenAI({
+        apiKey: localStorage.getItem("MYKEY")!,
+        dangerouslyAllowBrowser: true
+    });
+
+    let doChat = true;
     function backButton() {
         setQuestionNum(7);
         setSubmitted(0);
@@ -92,17 +101,32 @@ export function BasicQuestions(): JSX.Element {
     const [answer6, setAnswer6] = useState<string>("");
     const [answer7, setAnswer7] = useState<string>("");
     const [submitted, setSubmitted] = useState<number>(0);
-    const [response, setRespones] = useState<string>("");
+    const [response, setResponse] = useState<string | null>("");
+
+    async function chat() {
+        const completion = await client.chat.completions.create({
+          messages: [{"role": "system", "content": GPTrequestBasic}],
+          model: "gpt-4-turbo",
+          response_format: {type: "json_object"},
+                    
+        });
+        setResponse(completion.choices[0].message.content);
+    }
     //const keys = Object.keys(Question1);
     let GPTrequestBasic = "";
     GPTrequestBasic = `Hello, A client has completed a career quiz and based on the following answers, which job would you think best applies to them:\n 
-    Question: ${Questions.Q1}, Options: ${Question1.O1}, ${Question1.O2}, ${Question1.O3},() ${Question1.O4}, Answer Given: ${answer1}.\n
+    Question: ${Questions.Q1}: Options: ${Question1.O1}, ${Question1.O2}, ${Question1.O3}, ${Question1.O4}, Answer Given: ${answer1}.\n
     Question: ${Questions.Q2}: Options: ${Question2.O1}, ${Question2.O2}, ${Question2.O3}, ${Question2.O4}, Answer Given: ${answer2}.\n
     Question: ${Questions.Q3}: Options: ${Question3.O1}, ${Question3.O2}, ${Question3.O3}, ${Question3.O4}, Answer Given: ${answer3}.\n
     Question: ${Questions.Q4}: Options: ${Question4.O1}, ${Question4.O2}, ${Question4.O3}, ${Question4.O4}, Answer Given: ${answer4}.\n
     Question: ${Questions.Q5}: Options: ${Question5.O1}, ${Question5.O2}, ${Question5.O3}, ${Question5.O4}, Answer Given: ${answer5}.\n
     Question: ${Questions.Q6}: Options: ${Question6.O1}, ${Question6.O2}, ${Question6.O3}, ${Question6.O4}, Answer Given: ${answer6}.\n
     Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.`
+    
+    if (questionNum === 8 && doChat === true ) {
+        doChat = false;
+        chat();
+    }
 
     /*
     function chatGPT(GPTrequestBasic): {
@@ -117,19 +141,20 @@ export function BasicQuestions(): JSX.Element {
     
     
     return (
-        <div style={{backgroundColor: '#282c34',height:'100vh'}}>
+        <div>
+            <div className="anim">
             {questionNum <= 7 ? (
                 <div>
-                    <br></br>
+                    <p>{localStorage.getItem("saveKeyData")}</p>
                     <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                         <div className="progress_bar_back">
-                           <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
+                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
                         </div><br></br>
                     </div>
                 </div>
             ) : null }
             {questionNum === 0 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <h3>
                         This basic test will present you with 7 different multiple choice questions.<br></br>
@@ -141,7 +166,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 1 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -204,7 +229,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 2 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -267,7 +292,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 3 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -330,7 +355,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 4 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -393,7 +418,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 5 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -456,7 +481,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 6 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -519,7 +544,7 @@ export function BasicQuestions(): JSX.Element {
                     <div className="margin"></div>
                 </div>
             ) : questionNum === 7 ? (
-                <div className="boxQuestionBack">
+                <div className="qBox">
                     <div className="margin"></div>
                     <div>
                         <button onClick={() => setQuestionNum(questionNum - 1)}>
@@ -620,9 +645,11 @@ export function BasicQuestions(): JSX.Element {
                     <div>
                         <h2>Please wait while chat GPT prepares your answer below:</h2>
                         <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}></div>
+                        {response}
                     </div>
                 </div>
             ) : null }
+            </div>
         </div>
     )
 }

@@ -4,6 +4,8 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 //import { text } from 'stream/consumers';
 import git from "./GitHub.png";
+//import { OpenAIApi, Configuration, CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
+        
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
@@ -73,6 +75,7 @@ function App() {
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
+    localStorage.setItem(saveKeyData, event.target.value);
     setKey(event.target.value);
   }
 
