@@ -127,6 +127,18 @@ export function BasicQuestions(): JSX.Element {
         chat();
     }
 
+    /*
+    function chatGPT(GPTrequestBasic): {
+        response = await OpenAI.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [{ role: "user", content: message }],
+            temperature: 0,
+            max_tokens: 1000,
+        });
+    }
+    */
+    
+    
     return (
         <div>
             <div className="anim">
@@ -595,7 +607,7 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : submitted === 1 && questionNum === 8 ? (
                 <div>
-                    <div style={{height:'100%',width:'100%',backgroundColor:'gray'}}>
+                    <div style={{height:'100%',width:'100%',backgroundColor:'#282c34'}}>
                             <br></br>
                             <button 
                             onClick={() => backButton()}>
@@ -603,7 +615,7 @@ export function BasicQuestions(): JSX.Element {
                             </button>
                             <br></br>
                             <br></br>
-                            <div style={{marginBottom:'10px',margin:'auto',color:'white',backgroundColor:'MidnightBlue',height:'150px',width:'500px',borderRadius:'25px'}}>
+                            <div className="boxQuestionBack">
                                 <br></br>
                                 <h3>Are you sure you want to submit?</h3>
                                 <p>Make sure to review your answers carefully.</p>
