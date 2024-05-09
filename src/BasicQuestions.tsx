@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState } from "react";
 //import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
@@ -126,14 +127,26 @@ export function BasicQuestions(): JSX.Element {
         doChat = false;
         chat();
     }
-    //style={{backgroundColor:'white', height:'850px', backgroundImage: 'linear-gradient(white,black)'}}
+
+    /*
+    function chatGPT(GPTrequestBasic): {
+        response = await OpenAI.chat.completions.create({
+            model: "gpt-4-turbo",
+            messages: [{ role: "user", content: message }],
+            temperature: 0,
+            max_tokens: 1000,
+        });
+    }
+    */
+    
+    
     return (
         <div>
             <div className="anim">
             {questionNum <= 7 ? (
                 <div>
                     <p>{localStorage.getItem("saveKeyData")}</p>
-                    <div style={{marginLeft: '20px', marginRight: '20px'}}>
+                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
                         <div className="progress_bar_back">
                     <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
                         </div><br></br>
@@ -603,7 +616,7 @@ export function BasicQuestions(): JSX.Element {
                             </button>
                             <br></br>
                             <br></br>
-                            <div className="qBox">
+                            <div className="boxQuestionBack">
                                 <br></br>
                                 <h3>Are you sure you want to submit?</h3>
                                 <p>Make sure to review your answers carefully.</p>
@@ -618,18 +631,20 @@ export function BasicQuestions(): JSX.Element {
                         </div>
                 </div>
             ) : submitted === 2 && questionNum === 8 ? (
-                <div style={{height: '100%', color: 'white', textAlign: 'left', marginLeft: '35px'}}>
-                    <br></br>
-                    <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
-                    <h4>{Questions.Q1}: {answer1}</h4>
-                    <h4>{Questions.Q2}: {answer2}</h4>
-                    <h4>{Questions.Q3}: {answer3}</h4>
-                    <h4>{Questions.Q4}: {answer4}</h4>
-                    <h4>{Questions.Q5}: {answer5}</h4>
-                    <h4>{Questions.Q6}: {answer6}</h4>
-                    <h4>{Questions.Q7}: {answer7}</h4>
-                    <h2>Please wait while chat GPT prepares your answer below:</h2>
-                    <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}>
+                <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
+                    <div>
+                        <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
+                        <h4>{Questions.Q1}<br/>- {answer1}</h4>
+                        <h4>{Questions.Q2}<br/>- {answer2}</h4>
+                        <h4>{Questions.Q3}<br/>- {answer3}</h4>
+                        <h4>{Questions.Q4}<br/>- {answer4}</h4>
+                        <h4>{Questions.Q5}<br/>- {answer5}</h4>
+                        <h4>{Questions.Q6}<br/>- {answer6}</h4>
+                        <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                    </div>
+                    <div>
+                        <h2>Please wait while chat GPT prepares your answer below:</h2>
+                        <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}></div>
                         {response}
                     </div>
                 </div>

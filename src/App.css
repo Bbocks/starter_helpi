@@ -1,15 +1,17 @@
 .App {
   text-align: center;
+  background: #282c34;
+  background-size: contain;
+  height: 100vh;
 }
 
 .homepage {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: #282c34;
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1%;
   background: #000000;
 }
@@ -17,13 +19,13 @@
   background: rgb(32, 32, 32)
 }
 
-.navgroup {
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  padding: 1%;
   display: flex;
-  justify-content: space-around;
-}
-
-.navlog {
-
 }
 
 .title {
@@ -50,7 +52,7 @@
 
 .desc {
   font-family: "JetBrains Mono",monospace;
-  padding-bottom: 10%;
+  padding-bottom: 5%;
   padding-right: 10%;
   padding-left: 10%;
   font-size: 20px;
@@ -188,7 +190,9 @@
   width: 100%;
   background-color: rgb(32, 32, 32);
   border-radius: 25px;
-  margin-top: 10px
+  margin-top: 10px;
+  border-style: solid;
+  box-shadow: 0 0 2px 2px #141414
 }
 
 .progress_bar_bar {
@@ -196,6 +200,30 @@
   width: 25%;
   background-color:royalblue;
   border-radius: 25px;
+}
+
+.boxQuestionBack {
+  height: 50%;
+  width: 45%;
+  margin: auto;
+  color: white;
+  background-color: MidnightBlue;
+  border-radius: 25px;
+  box-shadow: 0 0 5px 5px #141414;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes App-logo-spin {
@@ -219,6 +247,18 @@
   background-color: rgb(8, 239, 24);
 }
 
-.api {
-  display: inline;
+.square-input {
+  width: 300px;
+  height: 300px;
+  text-shadow: #3c4fe0;
+}
+
+.API-font {
+  font-family: "JetBrains Mono",monospace;
+  color: white;
+}
+
+.Submit-Button {
+  font-family: "JetBrains Mono",monospace;
+  
 }
