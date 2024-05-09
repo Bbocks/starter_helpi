@@ -232,9 +232,22 @@
 
 .Submit-Button {
   font-family: "JetBrains Mono",monospace;
-  background-color: #3c4fe0;
-  color: white;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  padding: 0 10px;
+  background-color: #0070d2;
+  border-radius: 0.25rem;
+  border: 1px solid #0070d2;
+  color: #fff;
   font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: center;
+  :hover {
+      background-color: #005fb2;  
+      border-color: #005fb2;
+  } 
 }
 
 .names {
