@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
 //import { text } from 'stream/consumers';
 import git from "./GitHub.png";
@@ -22,10 +22,10 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-enum Role {
-  User,
-  System
-  } 
+//enum Role {
+//  User,
+//  System
+//  } 
   // default set the role to user, later if prompted allow the user to input admin password
   //let role = Role.User;
   //allocate an array for user responses, which will eventually be sent to chatGPT
