@@ -131,13 +131,13 @@
 .loader2 {
   align-content: center;
   align-self:center;
-  animation: spin 15s infinite;
+  animation: spin 4s infinite;
   height: 250px;
   width: 250px;
   border-color: darkviolet;
   border-style: dashed;
   border-spacing: 5px;
-  border-width: 7px;
+  border-width: 30px;
   border-radius: 50%;
 }
 

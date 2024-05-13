@@ -91,6 +91,12 @@ export function BasicQuestions(): JSX.Element {
         setQuestionNum(8);
         setSubmitted(2);
     }
+    function restart() {
+        setQuestionNum(0);
+        setSubmitted(0);
+        setAnswer1("");setAnswer2("");setAnswer3("");setAnswer4("");setAnswer5("");setAnswer6("");setAnswer7("")
+        doChat = true;
+    }
     const [questionNum, setQuestionNum] = useState<number>(0);
     //const [progress, setProgress] = useState<number>(0);
     const [answer1, setAnswer1] = useState<string>("");
@@ -642,6 +648,8 @@ export function BasicQuestions(): JSX.Element {
                             <h4>{Questions.Q5}<br/>- {answer5}</h4>
                             <h4>{Questions.Q6}<br/>- {answer6}</h4>
                             <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                            <br></br>
+                            <button className="button" onClick={() => restart()}>Restart</button>
                         </div>
                     </div>
                     <div className="qBoxLarge">
