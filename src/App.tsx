@@ -134,7 +134,6 @@ function App() {
             </div>
             <div className="content">
               <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-              
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
           </div>
@@ -154,28 +153,13 @@ function App() {
           </div>
         ) : null }
         <footer className='footer'>
-        <Container>
-            <Row>
-                <Col>
-                  <div className='api'>
-                    <Form>
-                    <Form.Label className='API-font'>API Key:</Form.Label>
-                    <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                    <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-                    </Form>
-                  </div>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Brett Bockstein</p>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Phillip Colburn</p>
-                </Col>
-                <Col>
-                  <p style={{color:"red"}}>Miles Gaydos</p>
-                </Col>
-            </Row>
-        </Container>
+        <div>
+            <Form>
+            <Form.Label className='API-font'>API Key:</Form.Label>
+            <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+            <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+            </Form>
+          </div>
         </footer>
       </div>
     </div>
