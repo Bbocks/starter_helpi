@@ -142,7 +142,6 @@ function App() {
             </div>
             <div className="content">
               <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-              
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
           </div>
@@ -151,8 +150,8 @@ function App() {
             <BasicQuestions></BasicQuestions>
           </div>
         ) : status === "detailed" ? (
-          <div className='det'>
-            <p className='asses-desc'>{assesmentDescription()}</p>
+          <div className='anim'>
+            <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
             <p>{ControlledTextarea()}</p>
             <div className="progress"></div>

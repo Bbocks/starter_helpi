@@ -91,6 +91,12 @@ export function BasicQuestions(): JSX.Element {
         setQuestionNum(8);
         setSubmitted(2);
     }
+    function restart() {
+        setQuestionNum(0);
+        setSubmitted(0);
+        setAnswer1("");setAnswer2("");setAnswer3("");setAnswer4("");setAnswer5("");setAnswer6("");setAnswer7("")
+        doChat = true;
+    }
     const [questionNum, setQuestionNum] = useState<number>(0);
     //const [progress, setProgress] = useState<number>(0);
     const [answer1, setAnswer1] = useState<string>("");
@@ -143,12 +149,12 @@ export function BasicQuestions(): JSX.Element {
     return (
         <div>
             <div className="anim">
+                <br></br>
             {questionNum <= 7 ? (
-                <div>
-                    <p>{localStorage.getItem("saveKeyData")}</p>
-                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '10px'}}>
+                <div style={{margin: "0"}}>
+                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '0'}}>
                         <div className="progress_bar_back">
-                    <div style={{backgroundColor: 'royalBlue', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s'}}></div>
+                    <div style={{backgroundColor: 'white', height: '24px', width: `${questionNum * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s', margin: '0'}}></div>
                         </div><br></br>
                     </div>
                 </div>
@@ -616,7 +622,7 @@ export function BasicQuestions(): JSX.Element {
                             </button>
                             <br></br>
                             <br></br>
-                            <div className="boxQuestionBack">
+                            <div className="qBox">
                                 <br></br>
                                 <h3>Are you sure you want to submit?</h3>
                                 <p>Make sure to review your answers carefully.</p>
@@ -632,20 +638,26 @@ export function BasicQuestions(): JSX.Element {
                 </div>
             ) : submitted === 2 && questionNum === 8 ? (
                 <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
-                    <div>
-                        <h1 style={{fontSize: '70px'}}>Here are your answers:</h1>
-                        <h4>{Questions.Q1}<br/>- {answer1}</h4>
-                        <h4>{Questions.Q2}<br/>- {answer2}</h4>
-                        <h4>{Questions.Q3}<br/>- {answer3}</h4>
-                        <h4>{Questions.Q4}<br/>- {answer4}</h4>
-                        <h4>{Questions.Q5}<br/>- {answer5}</h4>
-                        <h4>{Questions.Q6}<br/>- {answer6}</h4>
-                        <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                    <div className="qBoxLarge">
+                        <div style={{textAlign:'left',marginLeft:'50px'}}>
+                            <h1>Here are your answers:</h1>
+                            <h4>{Questions.Q1}<br/>- {answer1}</h4>
+                            <h4>{Questions.Q2}<br/>- {answer2}</h4>
+                            <h4>{Questions.Q3}<br/>- {answer3}</h4>
+                            <h4>{Questions.Q4}<br/>- {answer4}</h4>
+                            <h4>{Questions.Q5}<br/>- {answer5}</h4>
+                            <h4>{Questions.Q6}<br/>- {answer6}</h4>
+                            <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                            <br></br>
+                            <button className="button" onClick={() => restart()}>Restart</button>
+                        </div>
                     </div>
-                    <div>
-                        <h2>Please wait while chat GPT prepares your answer below:</h2>
-                        <div style={{margin:'auto',borderWidth:'4px',borderStyle: 'solid', borderRadius: '25px', width:'500px',height:'300px'}}></div>
-                        {response}
+                    <div className="qBoxLarge">
+                        <div style={{textAlign:'left',marginLeft:'50px'}}>
+                            <h2>Please wait while chat GPT prepares your results below:</h2>
+                            {response}
+                        </div>
+                        <div className="loader2"></div>
                     </div>
                 </div>
             ) : null }
