@@ -129,6 +129,8 @@
 }
 
 .loader2 {
+  margin-left: 28.999%;
+  margin-top: 10%;
   align-content: center;
   align-self:center;
   animation: spin 4s infinite;

@@ -142,7 +142,7 @@ function App() {
             <BasicQuestions></BasicQuestions>
           </div>
         ) : status === "detailed" ? (
-          <div className='det'>
+          <div className='anim'>
             <p>{assesmentDescription()}</p>
             <p>{displayQuestion()}</p>
             <p>{ControlledTextarea()}</p>
