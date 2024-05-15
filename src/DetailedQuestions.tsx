@@ -126,7 +126,7 @@ export function DetailedQuestions(): JSX.Element {
                 <p>{ControlledTextarea()}</p>
                 <div className="progress"></div>
                 <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
-                <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
+                <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
                 <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
               </div>
             ) : currentQuestion === 8 ? (
