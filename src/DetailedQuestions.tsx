@@ -115,13 +115,13 @@ export function DetailedQuestions(): JSX.Element {
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px'}}>
                             <h1>Here are your answers:</h1>
-                            <h4>{Questions.Q1}<br/>- {answer1}</h4>
-                            <h4>{Questions.Q2}<br/>- {answer2}</h4>
-                            <h4>{Questions.Q3}<br/>- {answer3}</h4>
-                            <h4>{Questions.Q4}<br/>- {answer4}</h4>
-                            <h4>{Questions.Q5}<br/>- {answer5}</h4>
-                            <h4>{Questions.Q6}<br/>- {answer6}</h4>
-                            <h4>{Questions.Q7}<br/>- {answer7}</h4>
+                            <h4>{detailedQuestions[0]}<br/>- {answer1}</h4>
+                            <h4>{detailedQuestions[1]}<br/>- {answer2}</h4>
+                            <h4>{detailedQuestions[2]}<br/>- {answer3}</h4>
+                            <h4>{detailedQuestions[3]}<br/>- {answer4}</h4>
+                            <h4>{detailedQuestions[4]}<br/>- {answer5}</h4>
+                            <h4>{detailedQuestions[5]}<br/>- {answer6}</h4>
+                            <h4>{detailedQuestions[6]}<br/>- {answer7}</h4>
                             <br></br>
                             <button className="button" onClick={() => restart()}>Restart</button>
                         </div>
