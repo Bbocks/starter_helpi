@@ -66,14 +66,14 @@ export function DetailedQuestions(): JSX.Element {
   function increaseProgress() {
 
     if (progress < 100) {
-      setProgress(progress + 25);
+      setProgress(progress + 100/7);
     }
     nextQuestion();
   }
 
   function decreaseProgress() {
     if (progress > 0) {
-      setProgress(progress - 25);
+      setProgress(progress - 100/7);
     }
     previousQuestion();
   }
@@ -114,20 +114,18 @@ export function DetailedQuestions(): JSX.Element {
                     <p>{assesmentDescription()}</p>
                     <p>{displayQuestion()}</p>
                     <p>{ControlledTextarea()}</p>
-                    <div className="progress"></div>
                     <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
                     <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
-                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
             </div>
             ) : currentQuestion === 7 ? (
               <div className='anim'>
                 <p>{assesmentDescription()}</p>
                 <p>{displayQuestion()}</p>
                 <p>{ControlledTextarea()}</p>
-                <div className="progress"></div>
                 <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
                 <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
-                <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
               </div>
             ) : currentQuestion === 8 ? (
             <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
