@@ -74,7 +74,7 @@ function App() {
       response_format: { type: "json_object" },
     });
     setgptResponse(completion.choices[0].message.content);
-}
+  }
   
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
