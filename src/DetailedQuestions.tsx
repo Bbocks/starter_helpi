@@ -115,7 +115,7 @@ export function DetailedQuestions(): JSX.Element {
                     <p>{displayQuestion()}</p>
                     <p>{ControlledTextarea()}</p>
                     <div className="progress"></div>
-                    <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+                    <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
                     <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             </div>
@@ -125,7 +125,7 @@ export function DetailedQuestions(): JSX.Element {
                 <p>{displayQuestion()}</p>
                 <p>{ControlledTextarea()}</p>
                 <div className="progress"></div>
-                <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+                <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
                 <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
                 <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
               </div>
