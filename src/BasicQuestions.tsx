@@ -1,15 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
-//import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
-//import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from 'openai';
-import OpenAI from "openai";
-//import * as readline from 'readline';
-//import * as dotenv from 'dotenv';
-/*
-const OpenAI = require("openai");
-require("dotenv").config();
-*/
+import OpenAI from 'openai';
 
 export enum Questions {
     Q1 = "Which best describes your ideal work environment?",
@@ -21,49 +13,49 @@ export enum Questions {
     Q7 = "Now which would you most like doing."
 }
 
-enum Question1 {
+export enum Question1 {
     O1 = "In a cubicle or office in a room with other coworkers.",
     O2 = "A round table where team members each work together to solve problems",
     O3 = "Outside where I can be in natural sunlight",
     O4 = "A secluded area where I can hunker down and get work done"
 }
 
-enum Question2 {
+export enum Question2 {
     O1 = "Fixing an air conditioning unit in a customers home",
     O2 = "Writing the script for a new movie",
     O3 = "Organizing a database or file system",
     O4 = "Planning an event for a client"
 }
 
-enum Question3 {
+export enum Question3 {
     O1 = "Fixing an air conditioning unit in a customers home",
     O2 = "Writing the script for a new movie",
     O3 = "Organizing a database or file system",
     O4 = "Planning an event for a client"
 }
 
-enum Question4 {
+export enum Question4 {
     O1 = "I am an outgoing person who loves taking the lead",
     O2 = "I like to work in groups of people, but I do not usually take charge",
     O3 = "I am introverted, but like to have access to help and coworkers",
     O4 = "I would prefer to have as much privacy as possible"
 }
 
-enum Question5 {
+export enum Question5 {
     O1 = "To earn as much money as possible",
     O2 = "To make a tangible difference in the world",
     O3 = "To make a stable income to support my lifestyle",
     O4 = "To have fun doing what I love most"
 }
 
-enum Question6 {
+export enum Question6 {
     O1 = "Caring for a botanical garden",
     O2 = "Assembling circuits in an intricate process",
     O3 = "Planning and constructing new infrastructure for a city",
     O4 = "Help adminster care to the sick"
 }
 
-enum Question7 {
+export enum Question7 {
     O1 = "Caring for a botanical garden",
     O2 = "Assembling circuits in an intricate process",
     O3 = "Planning and constructing new infrastructure for a city",
@@ -73,10 +65,12 @@ enum Question7 {
 
 export function BasicQuestions(): JSX.Element {
 
-    const client = new OpenAI({
+    const openai = new OpenAI({
+        organization: "org-kNhKymclXJYXGISGMHKqxdfZ",
+        project: "proj_yiEE3ziMLecmUsNX3fJBXuWI",
         apiKey: localStorage.getItem("MYKEY")!,
         dangerouslyAllowBrowser: true
-    });
+      });
 
     let doChat = true;
     function backButton() {
@@ -110,12 +104,18 @@ export function BasicQuestions(): JSX.Element {
     const [response, setResponse] = useState<string | null>("");
 
     async function chat() {
-        const completion = await client.chat.completions.create({
-          messages: [{"role": "system", "content": GPTrequestBasic}],
-          model: "gpt-4-turbo",
-          response_format: {type: "json_object"},
-                    
-        });
+        const completion = await openai.chat.completions.create({
+            messages: [
+              {
+                role: "system",
+                content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+              },
+              { role: "user", 
+                content: GPTrequestBasic }
+            ],
+            model: "gpt-4-turbo",
+            response_format: { type: "json_object" },
+          });
         setResponse(completion.choices[0].message.content);
     }
     //const keys = Object.keys(Question1);
@@ -133,17 +133,6 @@ export function BasicQuestions(): JSX.Element {
         doChat = false;
         chat();
     }
-
-    /*
-    function chatGPT(GPTrequestBasic): {
-        response = await OpenAI.chat.completions.create({
-            model: "gpt-4-turbo",
-            messages: [{ role: "user", content: message }],
-            temperature: 0,
-            max_tokens: 1000,
-        });
-    }
-    */
     
     
     return (

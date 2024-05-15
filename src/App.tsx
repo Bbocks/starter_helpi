@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BasicQuestions, Questions } from "./BasicQuestions";
+import { BasicQuestions, Questions, Question1, Question2, Question3, Question4, Question5, Question6, Question7 } from "./BasicQuestions";
 import git from "./GitHub.png";
 import OpenAI from "openai";
-import ;
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -54,8 +53,14 @@ function previousQuestion(){
   displayQuestion();
 }
 
-async function gpt(){
-  if(userResponses[0][0] !== "") {
+function App() {
+  const [key, setKey] = useState<string>(keyData);
+  const [status, setStatus] = useState("home");
+  const [progress, setProgress] = useState<number>(0);
+  const [currentResponse, setCurrentResponse] = useState<string>('');
+  const [gptResponse, setgptResponse] = useState<string | null>("");
+
+  async function gpt(){
     const completion = await openai.chat.completions.create({
       messages: [
         {
@@ -68,41 +73,8 @@ async function gpt(){
       model: "gpt-4-turbo",
       response_format: { type: "json_object" },
     });
-    console.log(completion.choices[0].message.content);
-  } else {
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {
-          role: "system",
-          content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
-        },
-        { role: "user", 
-          content: "Based on these questions: " + Questions + " and these answers: " +  + ", suggest 3 different possible careers and give a description of the career and what the requirements are for that career." },
-      ],
-      model: "gpt-4-turbo",
-      response_format: { type: "json_object" },
-    });
-    console.log(completion.choices[0].message.content);
-  }
-  const completion = await openai.chat.completions.create({
-    messages: [
-      {
-        role: "system",
-        content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
-      },
-      { role: "user", content: "Who won the world series in 2020?" },
-    ],
-    model: "gpt-4-turbo",
-    response_format: { type: "json_object" },
-  });
-  console.log(completion.choices[0].message.content);
+    setgptResponse(completion.choices[0].message.content);
 }
-
-function App() {
-  const [key, setKey] = useState<string>(keyData);
-  const [status, setStatus] = useState("home");
-  const [progress, setProgress] = useState<number>(0);
-  const [currentResponse, setCurrentResponse] = useState<string>('');
   
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
