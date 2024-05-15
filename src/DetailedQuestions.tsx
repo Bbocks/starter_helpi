@@ -114,9 +114,6 @@ export function DetailedQuestions(): JSX.Element {
                     <p>{assesmentDescription()}</p>
                     <p>{displayQuestion()}</p>
                     <p>{ControlledTextarea()}</p>
-                    if(questionNum === 8) {
-                    
-                    }
                     <div className="progress"></div>
                     <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
