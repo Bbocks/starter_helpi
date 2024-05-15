@@ -11,7 +11,7 @@ const OpenAI = require("openai");
 require("dotenv").config();
 */
 
-enum Questions {
+export enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
     Q3 = "Now which of the following would you most like doing?",
