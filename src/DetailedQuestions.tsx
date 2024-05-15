@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import OpenAI from 'openai';
 
 export function DetailedQuestions(): JSX.Element {
-    const [status, setStatus] = useState("detailed");
     const [progress, setProgress] = useState<number>(0);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [gptResponse, setgptResponse] = useState<string | null>("");
@@ -46,10 +45,6 @@ export function DetailedQuestions(): JSX.Element {
     function nextQuestion(){
       userResponses.push(currentResponse);
       currentQuestion++;
-      if(currentQuestion === 8) {
-        setStatus("result");
-        return ;
-      }
       displayQuestion();
     }
   
@@ -92,6 +87,12 @@ export function DetailedQuestions(): JSX.Element {
     setgptResponse("");
   }
 
+  function submit() {
+    userResponses.push(currentResponse);
+    currentQuestion++;
+    gpt();
+  }
+
   function ControlledTextarea() {
     return (
         <div>
@@ -108,7 +109,7 @@ export function DetailedQuestions(): JSX.Element {
 
     return (
         <div>
-            {status === "detailed" ? (
+            {currentQuestion <= 6 ? (
             <div className='anim'>
                     <p>{assesmentDescription()}</p>
                     <p>{displayQuestion()}</p>
@@ -118,7 +119,17 @@ export function DetailedQuestions(): JSX.Element {
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
                     <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
             </div>
-        ) : status === "result" ? (
+            ) : currentQuestion === 7 ? (
+              <div className='anim'>
+                <p>{assesmentDescription()}</p>
+                <p>{displayQuestion()}</p>
+                <p>{ControlledTextarea()}</p>
+                <div className="progress"></div>
+                <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+                <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
+              </div>
+            ) : currentQuestion === 8 ? (
             <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px'}}>
