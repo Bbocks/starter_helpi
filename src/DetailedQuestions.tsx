@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import OpenAI from 'openai';
 
 export function DetailedQuestions(): JSX.Element {
-    const [status, setStatus] = useState("detailed");
+    const [status, setStatus] = useState("home");
     const [progress, setProgress] = useState<number>(0);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [gptResponse, setgptResponse] = useState<string | null>("");
@@ -46,10 +46,6 @@ export function DetailedQuestions(): JSX.Element {
     function nextQuestion(){
       userResponses.push(currentResponse);
       currentQuestion++;
-      if(currentQuestion === 8) {
-        setStatus("result");
-        return ;
-      }
       displayQuestion();
     }
   
@@ -83,7 +79,7 @@ export function DetailedQuestions(): JSX.Element {
     previousQuestion();
   }
 
-  function restart() {
+  function restart(){
     userResponses = [];
     currentQuestion = 0;
     setProgress(0);
@@ -91,6 +87,7 @@ export function DetailedQuestions(): JSX.Element {
     displayQuestion();
     setgptResponse("");
   }
+
 
   function ControlledTextarea() {
     return (
@@ -103,7 +100,7 @@ export function DetailedQuestions(): JSX.Element {
           />
         </div>
       );
-  }
+}
 
 
     return (
@@ -113,6 +110,9 @@ export function DetailedQuestions(): JSX.Element {
                     <p>{assesmentDescription()}</p>
                     <p>{displayQuestion()}</p>
                     <p>{ControlledTextarea()}</p>
+                    if(questionNum === 8) {
+                    
+                    }
                     <div className="progress"></div>
                     <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
@@ -123,13 +123,13 @@ export function DetailedQuestions(): JSX.Element {
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px'}}>
                             <h1>Here are your answers:</h1>
-                            <h4>{detailedQuestions[0]}<br/>- {userResponses[0]}</h4>
-                            <h4>{detailedQuestions[1]}<br/>- {userResponses[1]}</h4>
-                            <h4>{detailedQuestions[2]}<br/>- {userResponses[2]}</h4>
-                            <h4>{detailedQuestions[3]}<br/>- {userResponses[3]}</h4>
-                            <h4>{detailedQuestions[4]}<br/>- {userResponses[4]}</h4>
-                            <h4>{detailedQuestions[5]}<br/>- {userResponses[5]}</h4>
-                            <h4>{detailedQuestions[6]}<br/>- {userResponses[6]}</h4>
+                            <h4>{detailedQuestions[0]}<br/>- {answer1}</h4>
+                            <h4>{detailedQuestions[1]}<br/>- {answer2}</h4>
+                            <h4>{detailedQuestions[2]}<br/>- {answer3}</h4>
+                            <h4>{detailedQuestions[3]}<br/>- {answer4}</h4>
+                            <h4>{detailedQuestions[4]}<br/>- {answer5}</h4>
+                            <h4>{detailedQuestions[5]}<br/>- {answer6}</h4>
+                            <h4>{detailedQuestions[6]}<br/>- {answer7}</h4>
                             <br></br>
                             <button className="button" onClick={() => restart()}>Restart</button>
                         </div>
