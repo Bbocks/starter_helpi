@@ -116,8 +116,8 @@ export function DetailedQuestions(): JSX.Element {
                     <p>{ControlledTextarea()}</p>
                     <div className="progress"></div>
                     <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
-                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
                     <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
+                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
             </div>
             ) : currentQuestion === 7 ? (
               <div className='anim'>
@@ -126,8 +126,8 @@ export function DetailedQuestions(): JSX.Element {
                 <p>{ControlledTextarea()}</p>
                 <div className="progress"></div>
                 <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
+                <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
                 <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
-                <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
               </div>
             ) : currentQuestion === 8 ? (
             <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
