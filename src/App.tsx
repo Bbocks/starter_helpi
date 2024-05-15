@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { BasicQuestions } from "./BasicQuestions";
+//import { text } from 'stream/consumers';
+import git from "./GitHub.png";
 //import { OpenAIApi, Configuration, CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
-import { text } from 'stream/consumers';
-
+        
 /*
 const OpenAI = require("openai");
 require("dotenv").config();
@@ -21,12 +22,12 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-enum Role {
-  User,
-  System
-  } 
+//enum Role {
+//  User,
+//  System
+//  } 
   // default set the role to user, later if prompted allow the user to input admin password
-  let role = Role.User;
+  //let role = Role.User;
   //allocate an array for user responses, which will eventually be sent to chatGPT
   let userResponses: string[] = ["answer to question 1","answer to question 2","answer to question 3", "answer to question 4"];
   //array for detailed questions
@@ -50,11 +51,11 @@ function assesmentDescription(){
 }
 
 
-function updateProgress(progress: number) {
+/*function updateProgress(progress: number) {
   const progressBar = document.getElementById("progressBar") as HTMLElement;
   progressBar.style.width = `${progress}%`;
   nextQuestion();
-}
+}*/
 
 function previousQuestion(){
   currentQuestion--;
@@ -66,6 +67,7 @@ function App() {
   const [key, setKey] = useState<string>(keyData);
   const [status, setStatus] = useState("home");
   const [progress, setProgress] = useState<number>(0);
+  const [currentResponse, setCurrentResponse] = useState<string>('');
   
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -79,9 +81,7 @@ function App() {
 
 
   function increaseProgress() {
-    const textareaValue = (document.querySelector('textarea[name="Answer here"]') as HTMLTextAreaElement).value;
 
-    userResponses.push(textareaValue);
     if (progress < 100) {
       setProgress(progress + 25);
     }
@@ -89,7 +89,6 @@ function App() {
   }
 
   function decreaseProgress() {
-    userResponses.pop();
     if (progress > 0) {
       setProgress(progress - 25);
     }
@@ -100,10 +99,19 @@ function App() {
 
   function ControlledTextarea() {
   
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setCurrentResponse(event.target.value);
+      userResponses.pop();
+      userResponses.push(currentResponse);
+    };
+  
     return (
       <div>
         <textarea
+          id="input"
           name="Answer here"
+          value={currentResponse}
+          onChange={handleChange}
         />
       </div>
     );
@@ -149,16 +157,36 @@ function App() {
             <div className="progress"></div>
             <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Go Back</Button>
             <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
-            <Button className="Progress-Button progress-button increase-button" onClick={() => { increaseProgress(); }}>Continue</Button>
+            <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
           </div>
         ) : null }
         <footer className='footer'>
-        <div>
+          <div>
             <Form>
             <Form.Label className='API-font'>API Key:</Form.Label>
             <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
             <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
             </Form>
+          </div>
+          <div className='names'>
+            <p className='name'><a href='https://github.com/Bbocks'>Brett Bockstein</a></p> 
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
+            <p className='name'><a href='https://github.com/bbatts24'>Phillip Colburn</a></p>
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
+            <p className='name'><a href='https://github.com/mdgaydos'>Miles Gaydos</a></p>
+            <img
+              src={git}
+              alt='Git Logo'
+              className='git-img'
+            />
           </div>
         </footer>
       </div>
