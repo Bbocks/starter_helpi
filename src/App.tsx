@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BasicQuestions, Questions, Question1, Question2, Question3, Question4, Question5, Question6, Question7 } from "./BasicQuestions";
+import { BasicQuestions } from "./BasicQuestions";
 import git from "./GitHub.png";
 import OpenAI from "openai";
 
