@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
-import { BasicQuestions } from "./BasicQuestions";
-//import { text } from 'stream/consumers';
+import { BasicQuestions, Questions } from "./BasicQuestions";
 import git from "./GitHub.png";
-//import { OpenAIApi, Configuration, CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
-        
-/*
-const OpenAI = require("openai");
-require("dotenv").config();
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-*/
+import OpenAI from "openai";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -22,14 +12,14 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-//enum Role {
-//  User,
-//  System
-//  } 
-  // default set the role to user, later if prompted allow the user to input admin password
-  //let role = Role.User;
-  //allocate an array for user responses, which will eventually be sent to chatGPT
-  let userResponses: string[] = ["answer to question 1","answer to question 2","answer to question 3", "answer to question 4"];
+const openai = new OpenAI({
+  organization: "org-kNhKymclXJYXGISGMHKqxdfZ",
+  project: "proj_yiEE3ziMLecmUsNX3fJBXuWI",
+  apiKey: localStorage.getItem("MYKEY")!,
+  dangerouslyAllowBrowser: true
+});
+
+  let userResponses: string[] = [""];
   //array for detailed questions
   let detailedQuestions: string[] = ["Question 1: What does your ideal work day look like?", "Question 2: What type of work are you interested in?", "Question 3: What education do you have, and would you be comfortable going back to school?", "Question 4: What's your ideal work enviroment?"];
   let currentQuestion: number = 0;
@@ -61,6 +51,50 @@ function previousQuestion(){
   currentQuestion--;
   userResponses.pop();
   displayQuestion();
+}
+
+async function gpt(){
+  if(userResponses[0][0] !== "") {
+    const completion = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+        },
+        { role: "user", 
+          content: "Based on these questions: " + detailedQuestions + " and these answers: " + userResponses + ", suggest 3 different possible careers and give a description of the career and what the requirements are for that career." },
+      ],
+      model: "gpt-4-turbo",
+      response_format: { type: "json_object" },
+    });
+    console.log(completion.choices[0].message.content);
+  } else {
+    const completion = await openai.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+        },
+        { role: "user", 
+          content: "Based on these questions: " + Questions + " and these answers: " +  + ", suggest 3 different possible careers and give a description of the career and what the requirements are for that career." },
+      ],
+      model: "gpt-4-turbo",
+      response_format: { type: "json_object" },
+    });
+    console.log(completion.choices[0].message.content);
+  }
+  const completion = await openai.chat.completions.create({
+    messages: [
+      {
+        role: "system",
+        content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+      },
+      { role: "user", content: "Who won the world series in 2020?" },
+    ],
+    model: "gpt-4-turbo",
+    response_format: { type: "json_object" },
+  });
+  console.log(completion.choices[0].message.content);
 }
 
 function App() {
