@@ -31,7 +31,7 @@ if (prevKey !== null) {
   //allocate an array for user responses, which will eventually be sent to chatGPT
   let userResponses: string[] = ["answer to question 1","answer to question 2","answer to question 3", "answer to question 4"];
   //array for detailed questions
-  let detailedQuestions: string[] = ["Question 1: What does your ideal work day look like?", "Question 2: What type of work are you interested in?", "Question 3: What education do you have, and would you be comfortable going back to school?", "Question 4: What's your ideal work enviroment?"];
+  let detailedQuestions: string[] = ["Question 1: What does your ideal work day look like?", "Question 2: What type of work are you interested in?", "Question 3: What education do you have, and would you be comfortable going back to school?", "Question 4: What's your ideal work enviroment?", "Question 5: What industry or industries excite you right now?", "Question 6: What areas of study interested you most in school?", "Question 7: What are your financial goals?"];
   let currentQuestion: number = 0;
   let currentResponse: string = '';
 
