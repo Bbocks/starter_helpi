@@ -83,7 +83,14 @@ export function DetailedQuestions(): JSX.Element {
     previousQuestion();
   }
 
-
+  function restart() {
+    userResponses = [];
+    currentQuestion = 0;
+    setProgress(0);
+    setCurrentResponse("");
+    displayQuestion();
+    setgptResponse("");
+  }
 
   function ControlledTextarea() {
     return (
@@ -96,7 +103,7 @@ export function DetailedQuestions(): JSX.Element {
           />
         </div>
       );
-}
+  }
 
 
     return (
