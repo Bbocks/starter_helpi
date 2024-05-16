@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import OpenAI from 'openai';
 
+//setResponse(JSON.stringify(completion.choices[0].message.content));
 export enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
@@ -84,12 +85,13 @@ export function BasicQuestions(): JSX.Element {
     function subButton2() {
         setQuestionNum(8);
         setSubmitted(2);
+        chat();
     }
     function restart() {
         setQuestionNum(0);
         setSubmitted(0);
         setAnswer1("");setAnswer2("");setAnswer3("");setAnswer4("");setAnswer5("");setAnswer6("");setAnswer7("")
-        doChat = true;
+        setResponse("")
     }
     const [questionNum, setQuestionNum] = useState<number>(0);
     //const [progress, setProgress] = useState<number>(0);
@@ -115,9 +117,9 @@ export function BasicQuestions(): JSX.Element {
             ],
             model: "gpt-4-turbo",
             max_tokens: 512,
-            response_format: { type: "json_object" },
           });
         setResponse(completion.choices[0].message.content);
+        console.log(response)
     }
     //const keys = Object.keys(Question1);
     let GPTrequestBasic = "";
@@ -128,12 +130,20 @@ export function BasicQuestions(): JSX.Element {
     Question: ${Questions.Q4}: Options: ${Question4.O1}, ${Question4.O2}, ${Question4.O3}, ${Question4.O4}, Answer Given: ${answer4}.\n
     Question: ${Questions.Q5}: Options: ${Question5.O1}, ${Question5.O2}, ${Question5.O3}, ${Question5.O4}, Answer Given: ${answer5}.\n
     Question: ${Questions.Q6}: Options: ${Question6.O1}, ${Question6.O2}, ${Question6.O3}, ${Question6.O4}, Answer Given: ${answer6}.\n
-    Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.`
-    
+    Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.
+    Please output your response in the form of a list of 5 careers accompanied by a reason for each. Do NOT output in a JSON format.\n
+    Use this format:\n
+    Career 1: *career 1*.\n
+    Reason: *reason for career 1*\n
+    Career 2: *career 2*.\n
+    Reason: *reason for career 2*\n
+    continue as follows for all five careers.`
+    /*
     if (questionNum === 8 && doChat === true ) {
         doChat = false;
         chat();
     }
+    */
     
     
     return (
@@ -643,13 +653,12 @@ export function BasicQuestions(): JSX.Element {
                         </div>
                     </div>
                     <div className="qBoxLarge">
-                        <div style={{textAlign:'left',marginLeft:'50px'}}>
+                        <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
                             <h2>Please wait while chat GPT prepares your results below:</h2>
-                            {console.log(response)}
-                            {console.log(response != null ? JSON.parse(response): null)}
-                            {response != null ? JSON.parse(response): null} 
+                            {response}
                         </div>
-                        <div className="loader2"></div>
+                        {response === "" ? <div className="loader2"></div>
+                        : null}
                     </div>
                 </div>
             ) : null }
@@ -657,3 +666,4 @@ export function BasicQuestions(): JSX.Element {
         </div>
     )
 }
+//{response != null ? JSON.parse(response): null} 
