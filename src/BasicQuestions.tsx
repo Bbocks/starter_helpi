@@ -68,7 +68,7 @@ export function BasicQuestions(): JSX.Element {
     const openai = new OpenAI({
         organization: "org-kNhKymclXJYXGISGMHKqxdfZ",
         project: "proj_yiEE3ziMLecmUsNX3fJBXuWI",
-        apiKey: localStorage.getItem("MYKEY")!,
+        apiKey: localStorage.getItem("MYKEY")!.replaceAll('"',''),
         dangerouslyAllowBrowser: true
       });
 
