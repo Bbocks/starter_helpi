@@ -106,6 +106,8 @@ export function DetailedQuestions(): JSX.Element {
                             value={currentResponse}
                             onChange={handleChange}
                         />
+                        <br></br>
+                        <br></br>
                         <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion} disabled={currentQuestion === 0}>Back</Button>
                         <Button className="Progress-Button progress-button increase-button" onClick={nextQuestion}>Continue</Button>                  
                     </div>
