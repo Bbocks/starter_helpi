@@ -16,25 +16,6 @@ export function DetailedQuestions(): JSX.Element {
         dangerouslyAllowBrowser: true
     });
 
-    async function gpt() {
-        const completion = await openai.chat.completions.create({
-            messages: [
-                {
-                    role: "system",
-                    content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
-                },
-                {
-                    role: "user",
-                    content: "Based on these questions: " + detailedQuestions + " and these answers: " + userResponses + ", suggest 3 different possible careers and give a description of the career and what the requirements are for that career."
-                },
-            ],
-            model: "gpt-4-turbo",
-            max_tokens: 512,
-            response_format: { type: "json_object" },
-        });
-        setGptResponse(completion.choices[0].message.content);
-    }
-
     const detailedQuestions: string[] = [
         "Question 1: What does your ideal work day look like?",
         "Question 2: What type of work are you interested in?",
@@ -44,6 +25,40 @@ export function DetailedQuestions(): JSX.Element {
         "Question 6: What areas of study interested you most in school?",
         "Question 7: What are your financial goals?"
     ];
+
+    async function gpt() {
+        const completion = await openai.chat.completions.create({
+            messages: [
+              {
+                role: "system",
+                content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+              },
+              { role: "user", 
+                content: GPTrequestBasic }
+            ],
+            model: "gpt-4-turbo",
+            max_tokens: 512,
+          });
+        setGptResponse(completion.choices[0].message.content);
+        console.log(gptResponse)
+    }
+    //const keys = Object.keys(Question1);
+    let GPTrequestBasic = "";
+    GPTrequestBasic = `Hello, A client has completed a career quiz and based on the following answers, which job would you think best applies to them:\n 
+    Question: ${detailedQuestions[0]}, Answer Given: ${userResponses[0]}.\n
+    Question: ${detailedQuestions[1]}, Answer Given: ${userResponses[1]}.\n
+    Question: ${detailedQuestions[2]}, Answer Given: ${userResponses[2]}.\n
+    Question: ${detailedQuestions[3]}, Answer Given: ${userResponses[3]}.\n
+    Question: ${detailedQuestions[4]}, Answer Given: ${userResponses[4]}.\n
+    Question: ${detailedQuestions[5]}, Answer Given: ${userResponses[5]}.\n
+    Question: ${detailedQuestions[6]}, Answer Given: ${userResponses[6]}.
+    Please output your response in the form of a list of 5 careers accompanied by a reason for each. Do NOT output in a JSON format.\n
+    Use this format:\n
+    Career 1: *career 1*.\n
+    Reason: *reason for career 1*\n
+    Career 2: *career 2*.\n
+    Reason: *reason for career 2*\n
+    continue as follows for all five careers.`
 
     const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCurrentResponse(event.target.value);
