@@ -159,6 +159,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 .qBoxLarge {
+  overflow-y: auto;
   position: relative;
   height: 75%;
   width: 45%;
