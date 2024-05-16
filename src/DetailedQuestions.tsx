@@ -99,26 +99,39 @@ export function DetailedQuestions(): JSX.Element {
         <div>
             {currentQuestion < detailedQuestions.length ? (
                 <div className='anim'>
+                  <div style={{margin: "0"}}>
+                    <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '0'}}>
+                      <div className="progress_bar_back">
+                      <div style={{backgroundColor: 'white', height: '24px', width: `${currentQuestion * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s', margin: '0'}}></div>
+                    </div><br></br>
+                  </div>
+                </div>
                   <div className='qBox'>
+                    <br></br>
+                    <br></br>
                     <p>{assesmentDescription()}</p>
                     <p>{detailedQuestions[currentQuestion]}</p>
                     <p><ControlledTextarea /></p>
                     <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion} disabled={currentQuestion === 0}>Back</Button>
-                    <Button className="Progress-Button progress-button increase-button" onClick={nextQuestion}>Continue</Button>
-                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
-                  </div>
+                    <Button className="Progress-Button progress-button increase-button" onClick={nextQuestion}>Continue</Button>                  </div>
                 </div>
             ) : currentQuestion === detailedQuestions.length ? (
-                <div className='anim'>
-                  <div className='qBox'>
-                    <p>{assesmentDescription()}</p>
-                    <p>{detailedQuestions[currentQuestion - 1]}</p>
-                    <p><ControlledTextarea /></p>
-                    <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion}>Back</Button>
-                    <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
-                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
-                  </div>
+              <div className='anim'>
+              <div style={{margin: "0"}}>
+                <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '0'}}>
+                  <div className="progress_bar_back">
+                    <div style={{backgroundColor: 'white', height: '24px', width: `${currentQuestion * (100 / 7)}%`, borderRadius: '25px', transition: 'width 1s', margin: '0'}}></div>
+                  </div><br></br>
                 </div>
+              </div>
+              <div className='qBox'>
+                <br></br>
+                <br></br>
+                <h3>Are you sure you want to submit?</h3>
+                <p>Make sure to review your answers carefully.</p>
+                <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion} disabled={currentQuestion === 0}>Back</Button>
+                <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>              </div>
+            </div>
             ) : (
                 <div style={{ height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline' }}>
                     <div className="qBoxLarge">
