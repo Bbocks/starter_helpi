@@ -155,7 +155,7 @@ export function BasicQuestions(): JSX.Element {
                         This basic test will present you with 7 different multiple choice questions.<br></br>
                         Please try and answer them as well as you can, do not leave any blank.<br></br>
                     </h3>
-                    <button onClick={() => setQuestionNum(questionNum + 1)}>
+                    <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                         Continue
                     </button>
                     <div className="margin"></div>
@@ -164,7 +164,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -217,7 +217,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -227,7 +227,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -280,7 +280,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -290,7 +290,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -343,7 +343,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -353,7 +353,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -406,7 +406,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -416,7 +416,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -469,7 +469,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -479,7 +479,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -532,7 +532,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -542,7 +542,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -595,7 +595,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => subButton1()}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => subButton1()}>
                             Submit
                         </button>
                     </div>
@@ -605,7 +605,7 @@ export function BasicQuestions(): JSX.Element {
                 <div>
                     <div style={{height:'100%',width:'100%'}}>
                             <br></br>
-                            <button 
+                            <button className="Progress-Button progress-button decrease-button" 
                             onClick={() => backButton()}>
                                 Back
                             </button>
@@ -618,7 +618,7 @@ export function BasicQuestions(): JSX.Element {
                                 <br></br>
                             </div>
                             <br></br>
-                            <button 
+                            <button className="Progress-Button progress-button increase-button"
                             onClick={() => subButton2()}>
                                 Submit
                             </button>
