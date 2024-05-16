@@ -645,6 +645,7 @@ export function BasicQuestions(): JSX.Element {
                             <h4>{Questions.Q7}<br/>- {answer7}</h4>
                             <br></br>
                             <button className="button" onClick={() => restart()}>Restart</button>
+                            <br></br>
                         </div>
                     </div>
                     <div className="qBoxLarge">

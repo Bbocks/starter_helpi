@@ -156,14 +156,17 @@ export function DetailedQuestions(): JSX.Element {
                             ))}
                             <br></br>
                             <button className="button" onClick={restart}>Restart</button>
+                            <br></br>
                         </div>
                     </div>
                     <div className="qBoxLarge">
-                        <div style={{ textAlign: 'left', marginLeft: '50px' }}>
+                        <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
                             <h2>Please wait while chat GPT prepares your results below:</h2>
                             {gptResponse}
                         </div>
-                        <div className="loader2"></div>
+                        {gptResponse === "" ? <div className="loader2"></div>
+                        : null}
+                        <br></br>
                     </div>
                 </div>
             )}
