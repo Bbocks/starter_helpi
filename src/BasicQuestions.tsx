@@ -134,8 +134,10 @@ export function BasicQuestions(): JSX.Element {
     Please output your response in the form of a list of 5 careers accompanied by a reason for each. Do NOT output in a JSON format.\n
     Use this format:\n
     Career 1: *career 1*.\n
+    Description: *Brief description for career 1*\n
     Reason: *reason for career 1*\n
     Career 2: *career 2*.\n
+    Description: *Brief description for career 2*\n
     Reason: *reason for career 2*\n
     continue as follows for all five careers.`
     /*
