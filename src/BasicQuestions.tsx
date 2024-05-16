@@ -73,7 +73,6 @@ export function BasicQuestions(): JSX.Element {
         dangerouslyAllowBrowser: true
       });
 
-    let doChat = true;
     function backButton() {
         setQuestionNum(7);
         setSubmitted(0);
@@ -140,12 +139,6 @@ export function BasicQuestions(): JSX.Element {
     Description: *Brief description for career 2*\n
     Reason: *reason for career 2*\n
     continue as follows for all five careers.`
-    /*
-    if (questionNum === 8 && doChat === true ) {
-        doChat = false;
-        chat();
-    }
-    */
     
     
     return (
