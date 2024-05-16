@@ -99,21 +99,25 @@ export function DetailedQuestions(): JSX.Element {
         <div>
             {currentQuestion < detailedQuestions.length ? (
                 <div className='anim'>
+                  <div className='qBox'>
                     <p>{assesmentDescription()}</p>
                     <p>{detailedQuestions[currentQuestion]}</p>
                     <p><ControlledTextarea /></p>
                     <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion} disabled={currentQuestion === 0}>Back</Button>
                     <Button className="Progress-Button progress-button increase-button" onClick={nextQuestion}>Continue</Button>
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
+                  </div>
                 </div>
             ) : currentQuestion === detailedQuestions.length ? (
                 <div className='anim'>
+                  <div className='qBox'>
                     <p>{assesmentDescription()}</p>
                     <p>{detailedQuestions[currentQuestion - 1]}</p>
                     <p><ControlledTextarea /></p>
                     <Button className="Progress-Button progress-button decrease-button" onClick={previousQuestion}>Back</Button>
                     <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
                     <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}></div>
+                  </div>
                 </div>
             ) : (
                 <div style={{ height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline' }}>
