@@ -645,7 +645,9 @@ export function BasicQuestions(): JSX.Element {
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px'}}>
                             <h2>Please wait while chat GPT prepares your results below:</h2>
-                            {response}
+                            {console.log(response)}
+                            {console.log(response != null ? JSON.parse(response): null)}
+                            {response != null ? JSON.parse(response): null} 
                         </div>
                         <div className="loader2"></div>
                     </div>
