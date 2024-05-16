@@ -84,6 +84,7 @@ export function DetailedQuestions(): JSX.Element {
         <div>
             {currentQuestion < detailedQuestions.length ? (
                 <div className='anim'>
+                  <br></br>
                     <div style={{margin: "0"}}>
                         <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '0'}}>
                             <div className="progress_bar_back">
@@ -110,6 +111,7 @@ export function DetailedQuestions(): JSX.Element {
                 </div>
             ) : currentQuestion === detailedQuestions.length ? (
                 <div className='anim'>
+                  <br></br>
                     <div style={{margin: "0"}}>
                         <div style={{marginLeft: '20px', marginRight: '20px', marginTop: '0'}}>
                             <div className="progress_bar_back">
