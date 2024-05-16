@@ -110,27 +110,31 @@ export function DetailedQuestions(): JSX.Element {
     return (
         <div>
             {currentQuestion <= 6 ? (
-            <div className='anim'>
-                    <p>{assesmentDescription()}</p>
-                    <p>{displayQuestion()}</p>
-                    <p>{ControlledTextarea()}</p>
-                    <div className="progress"></div>
-                    <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
-                    <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
-                    <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
-            </div>
+              <div className='anim'>
+                <div className='qBox'>
+                      <p>{assesmentDescription()}</p>
+                      <p>{displayQuestion()}</p>
+                      <p>{ControlledTextarea()}</p>
+                      <div className="progress"></div>
+                      <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
+                      <Button className="Progress-Button progress-button increase-button" onClick={increaseProgress}>Continue</Button>
+                      <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                </div>
+              </div>
             ) : currentQuestion === 7 ? (
               <div className='anim'>
-                <p>{assesmentDescription()}</p>
-                <p>{displayQuestion()}</p>
-                <p>{ControlledTextarea()}</p>
-                <div className="progress"></div>
-                <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
-                <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
-                <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                <div className='qBox'>
+                  <p>{assesmentDescription()}</p>
+                  <p>{displayQuestion()}</p>
+                  <p>{ControlledTextarea()}</p>
+                  <div className="progress"></div>
+                  <Button className="Progress-Button progress-button decrease-button" onClick={decreaseProgress}>Back</Button>
+                  <Button className="Progress-Button progress-button increase-button" onClick={submit}>Submit</Button>
+                  <div className="progress-bar" id="progressBar" style={{ width: `${progress}%` }}>{progress}%</div>
+                </div>
               </div>
             ) : currentQuestion === 8 ? (
-            <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
+              <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px'}}>
                             <h1>Here are your answers:</h1>
@@ -152,7 +156,7 @@ export function DetailedQuestions(): JSX.Element {
                         </div>
                         <div className="loader2"></div>
                     </div>
-                </div>
+              </div>
         ) : null }
         </div>
     )
