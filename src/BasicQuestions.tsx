@@ -650,11 +650,25 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <div className="qBoxLarge">
                         <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
-                            <h2>Please wait while chat GPT prepares your results below:</h2>
-                            {response}
+                            <h2>Here are the career suggestions:</h2>
+                            {response ? (
+                                <div>
+                                    {response.split("\n").map((line, index) => {
+                                        if (line.startsWith("Career")) {
+                                            return <h3 key={index}><strong>{line}</strong></h3>;
+                                        } else if (line.startsWith("Description:") || line.startsWith("Reason:")) {
+                                            return <ul key={index}><li>{line}</li></ul>;
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
+                                </div>
+                            ) : (
+                                <p>No response yet.</p>
+                            )}
                         </div>
-                        {response === "" ? <div className="loader2"></div>
-                        : null}
+                        {response === "" ? <div className="loader2"></div> : null}
+                        <br></br>
                     </div>
                 </div>
             ) : null }
