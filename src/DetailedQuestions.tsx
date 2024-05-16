@@ -12,7 +12,7 @@ export function DetailedQuestions(): JSX.Element {
     const openai = new OpenAI({
         organization: "org-kNhKymclXJYXGISGMHKqxdfZ",
         project: "proj_yiEE3ziMLecmUsNX3fJBXuWI",
-        apiKey: localStorage.getItem("MYKEY")!,
+        apiKey: localStorage.getItem("MYKEY")!.replaceAll('"',''),
         dangerouslyAllowBrowser: true
     });
 
@@ -29,6 +29,7 @@ export function DetailedQuestions(): JSX.Element {
                 },
             ],
             model: "gpt-4-turbo",
+            max_tokens: 512,
             response_format: { type: "json_object" },
         });
         setGptResponse(completion.choices[0].message.content);

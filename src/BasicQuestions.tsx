@@ -114,6 +114,7 @@ export function BasicQuestions(): JSX.Element {
                 content: GPTrequestBasic }
             ],
             model: "gpt-4-turbo",
+            max_tokens: 512,
             response_format: { type: "json_object" },
           });
         setResponse(completion.choices[0].message.content);
