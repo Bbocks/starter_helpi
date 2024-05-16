@@ -1,17 +1,10 @@
 import './App.css';
 import React, { useState } from "react";
-//import { render, screen } from "@testing-library/react";
 import { Form } from "react-bootstrap";
-//import { Configuration, OpenAIApi, ChatCompletionRequestMessage } from 'openai';
-import OpenAI from "openai";
-//import * as readline from 'readline';
-//import * as dotenv from 'dotenv';
-/*
-const OpenAI = require("openai");
-require("dotenv").config();
-*/
+import OpenAI from 'openai';
 
-enum Questions {
+//setResponse(JSON.stringify(completion.choices[0].message.content));
+export enum Questions {
     Q1 = "Which best describes your ideal work environment?",
     Q2 = "Which of the following would you least like doing?",
     Q3 = "Now which of the following would you most like doing?",
@@ -21,49 +14,49 @@ enum Questions {
     Q7 = "Now which would you most like doing."
 }
 
-enum Question1 {
+export enum Question1 {
     O1 = "In a cubicle or office in a room with other coworkers.",
     O2 = "A round table where team members each work together to solve problems",
     O3 = "Outside where I can be in natural sunlight",
     O4 = "A secluded area where I can hunker down and get work done"
 }
 
-enum Question2 {
+export enum Question2 {
     O1 = "Fixing an air conditioning unit in a customers home",
     O2 = "Writing the script for a new movie",
     O3 = "Organizing a database or file system",
     O4 = "Planning an event for a client"
 }
 
-enum Question3 {
+export enum Question3 {
     O1 = "Fixing an air conditioning unit in a customers home",
     O2 = "Writing the script for a new movie",
     O3 = "Organizing a database or file system",
     O4 = "Planning an event for a client"
 }
 
-enum Question4 {
+export enum Question4 {
     O1 = "I am an outgoing person who loves taking the lead",
     O2 = "I like to work in groups of people, but I do not usually take charge",
     O3 = "I am introverted, but like to have access to help and coworkers",
     O4 = "I would prefer to have as much privacy as possible"
 }
 
-enum Question5 {
+export enum Question5 {
     O1 = "To earn as much money as possible",
     O2 = "To make a tangible difference in the world",
     O3 = "To make a stable income to support my lifestyle",
     O4 = "To have fun doing what I love most"
 }
 
-enum Question6 {
+export enum Question6 {
     O1 = "Caring for a botanical garden",
     O2 = "Assembling circuits in an intricate process",
     O3 = "Planning and constructing new infrastructure for a city",
     O4 = "Help adminster care to the sick"
 }
 
-enum Question7 {
+export enum Question7 {
     O1 = "Caring for a botanical garden",
     O2 = "Assembling circuits in an intricate process",
     O3 = "Planning and constructing new infrastructure for a city",
@@ -73,12 +66,13 @@ enum Question7 {
 
 export function BasicQuestions(): JSX.Element {
 
-    const client = new OpenAI({
-        apiKey: localStorage.getItem("MYKEY")!,
+    const openai = new OpenAI({
+        organization: "org-kNhKymclXJYXGISGMHKqxdfZ",
+        project: "proj_yiEE3ziMLecmUsNX3fJBXuWI",
+        apiKey: localStorage.getItem("MYKEY")!.replaceAll('"',''),
         dangerouslyAllowBrowser: true
-    });
+      });
 
-    let doChat = true;
     function backButton() {
         setQuestionNum(7);
         setSubmitted(0);
@@ -90,12 +84,13 @@ export function BasicQuestions(): JSX.Element {
     function subButton2() {
         setQuestionNum(8);
         setSubmitted(2);
+        chat();
     }
     function restart() {
         setQuestionNum(0);
         setSubmitted(0);
         setAnswer1("");setAnswer2("");setAnswer3("");setAnswer4("");setAnswer5("");setAnswer6("");setAnswer7("")
-        doChat = true;
+        setResponse("")
     }
     const [questionNum, setQuestionNum] = useState<number>(0);
     //const [progress, setProgress] = useState<number>(0);
@@ -110,13 +105,20 @@ export function BasicQuestions(): JSX.Element {
     const [response, setResponse] = useState<string | null>("");
 
     async function chat() {
-        const completion = await client.chat.completions.create({
-          messages: [{"role": "system", "content": GPTrequestBasic}],
-          model: "gpt-4-turbo",
-          response_format: {type: "json_object"},
-                    
-        });
+        const completion = await openai.chat.completions.create({
+            messages: [
+              {
+                role: "system",
+                content: "You are a helpful assistant designed to give career suggestions based on a set of questions and answers and output the results in a JSON format.",
+              },
+              { role: "user", 
+                content: GPTrequestBasic }
+            ],
+            model: "gpt-4-turbo",
+            max_tokens: 512,
+          });
         setResponse(completion.choices[0].message.content);
+        console.log(response)
     }
     //const keys = Object.keys(Question1);
     let GPTrequestBasic = "";
@@ -127,23 +129,16 @@ export function BasicQuestions(): JSX.Element {
     Question: ${Questions.Q4}: Options: ${Question4.O1}, ${Question4.O2}, ${Question4.O3}, ${Question4.O4}, Answer Given: ${answer4}.\n
     Question: ${Questions.Q5}: Options: ${Question5.O1}, ${Question5.O2}, ${Question5.O3}, ${Question5.O4}, Answer Given: ${answer5}.\n
     Question: ${Questions.Q6}: Options: ${Question6.O1}, ${Question6.O2}, ${Question6.O3}, ${Question6.O4}, Answer Given: ${answer6}.\n
-    Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.`
-    
-    if (questionNum === 8 && doChat === true ) {
-        doChat = false;
-        chat();
-    }
-
-    /*
-    function chatGPT(GPTrequestBasic): {
-        response = await OpenAI.chat.completions.create({
-            model: "gpt-4-turbo",
-            messages: [{ role: "user", content: message }],
-            temperature: 0,
-            max_tokens: 1000,
-        });
-    }
-    */
+    Question: ${Questions.Q7}: Options: ${Question7.O1}, ${Question7.O2}, ${Question7.O3}, ${Question7.O4}, Answer Given: ${answer7}.
+    Please output your response in the form of a list of 5 careers accompanied by a reason for each. Do NOT output in a JSON format.\n
+    Use this format:\n
+    Career 1: *career 1*.\n
+    Description: *Brief description for career 1*\n
+    Reason: *reason for career 1*\n
+    Career 2: *career 2*.\n
+    Description: *Brief description for career 2*\n
+    Reason: *reason for career 2*\n
+    continue as follows for all five careers.`
     
     
     return (
@@ -166,7 +161,7 @@ export function BasicQuestions(): JSX.Element {
                         This basic test will present you with 7 different multiple choice questions.<br></br>
                         Please try and answer them as well as you can, do not leave any blank.<br></br>
                     </h3>
-                    <button onClick={() => setQuestionNum(questionNum + 1)}>
+                    <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                         Continue
                     </button>
                     <div className="margin"></div>
@@ -175,7 +170,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -228,7 +223,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -238,7 +233,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -291,7 +286,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -301,7 +296,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -354,7 +349,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -364,7 +359,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -417,7 +412,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -427,7 +422,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -480,7 +475,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -490,7 +485,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -543,7 +538,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum + 1)}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => setQuestionNum(questionNum + 1)}>
                             Next
                         </button>
                     </div>
@@ -553,7 +548,7 @@ export function BasicQuestions(): JSX.Element {
                 <div className="qBox">
                     <div className="margin"></div>
                     <div>
-                        <button onClick={() => setQuestionNum(questionNum - 1)}>
+                        <button className="Progress-Button progress-button decrease-button" onClick={() => setQuestionNum(questionNum - 1)}>
                             Back
                         </button>
                     </div>
@@ -606,7 +601,7 @@ export function BasicQuestions(): JSX.Element {
                     </div>
                     <br></br>
                     <div>
-                        <button onClick={() => subButton1()}>
+                        <button className="Progress-Button progress-button increase-button" onClick={() => subButton1()}>
                             Submit
                         </button>
                     </div>
@@ -616,7 +611,7 @@ export function BasicQuestions(): JSX.Element {
                 <div>
                     <div style={{height:'100%',width:'100%'}}>
                             <br></br>
-                            <button 
+                            <button className="Progress-Button progress-button decrease-button" 
                             onClick={() => backButton()}>
                                 Back
                             </button>
@@ -629,7 +624,7 @@ export function BasicQuestions(): JSX.Element {
                                 <br></br>
                             </div>
                             <br></br>
-                            <button 
+                            <button className="Progress-Button progress-button increase-button"
                             onClick={() => subButton2()}>
                                 Submit
                             </button>
@@ -650,14 +645,30 @@ export function BasicQuestions(): JSX.Element {
                             <h4>{Questions.Q7}<br/>- {answer7}</h4>
                             <br></br>
                             <button className="button" onClick={() => restart()}>Restart</button>
+                            <br></br>
                         </div>
                     </div>
                     <div className="qBoxLarge">
-                        <div style={{textAlign:'left',marginLeft:'50px'}}>
-                            <h2>Please wait while chat GPT prepares your results below:</h2>
-                            {response}
+                        <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
+                            <h2>Here are the career suggestions:</h2>
+                            {response ? (
+                                <div>
+                                    {response.split("\n").map((line, index) => {
+                                        if (line.startsWith("Career")) {
+                                            return <h3 key={index}><strong>{line}</strong></h3>;
+                                        } else if (line.startsWith("Description:") || line.startsWith("Reason:")) {
+                                            return <ul key={index}><li>{line}</li></ul>;
+                                        } else {
+                                            return null;
+                                        }
+                                    })}
+                                </div>
+                            ) : (
+                                <p>No response yet.</p>
+                            )}
                         </div>
-                        <div className="loader2"></div>
+                        {response === "" ? <div className="loader2"></div> : null}
+                        <br></br>
                     </div>
                 </div>
             ) : null }
@@ -665,3 +676,4 @@ export function BasicQuestions(): JSX.Element {
         </div>
     )
 }
+//{response != null ? JSON.parse(response): null} 
