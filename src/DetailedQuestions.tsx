@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import OpenAI from 'openai';
 
 export function DetailedQuestions(): JSX.Element {
-    const [progress, setProgress] = useState<number>(0);
     const [currentResponse, setCurrentResponse] = useState<string>('');
     const [gptResponse, setGptResponse] = useState<string | null>("");
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -55,19 +54,16 @@ export function DetailedQuestions(): JSX.Element {
         setUserResponses(updatedResponses);
         setCurrentResponse("");
         setCurrentQuestion(currentQuestion + 1);
-        setProgress((currentQuestion + 1) / detailedQuestions.length * 100);
     };
 
     const previousQuestion = () => {
         setCurrentQuestion(currentQuestion - 1);
         setCurrentResponse(userResponses[currentQuestion - 1]);
-        setProgress((currentQuestion - 1) / detailedQuestions.length * 100);
     };
 
     const restart = () => {
         setUserResponses([]);
         setCurrentQuestion(0);
-        setProgress(0);
         setCurrentResponse("");
         setGptResponse("");
     };
