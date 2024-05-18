@@ -147,39 +147,41 @@ export function DetailedQuestions(): JSX.Element {
                     </div>
                 </div>
             ) : (
-                <div style={{ height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline', fontSize: '0.9em' }}>
-                    <div className="qBoxLarge">
-                        <div style={{ textAlign: 'left', marginLeft: '50px' }}>
-                            <h1>Here are your answers:</h1>
-                            {detailedQuestions.map((question, index) => (
-                                <h4 key={index}>{question}<br />- {userResponses[index]}</h4>
-                            ))}
-                            <br></br>
-                            <button className="button" onClick={restart}>Restart</button>
+                <div className='anim'>
+                    <div style={{height: '100%', color: 'white', textAlign: 'left', display: 'flex', justifyContent: 'space-around', alignItems: 'baseline'}}>
+                        <div className="qBoxLarge">
+                            <div style={{ textAlign: 'left', marginLeft: '50px' }}>
+                                <h1>Here are your answers:</h1>
+                                {detailedQuestions.map((question, index) => (
+                                    <h4 key={index}>{question}<br />- {userResponses[index]}</h4>
+                                ))}
+                                <br></br>
+                                <button className="button" onClick={restart}>Restart</button>
+                                <br></br>
+                            </div>
+                        </div>
+                        <div className="qBoxLarge">
+                            <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
+                                <h2>Here are the career suggestions:</h2>
+                                {gptResponse ? (
+                                    <div>
+                                        {gptResponse.split("\n").map((line, index) => {
+                                            if (line.startsWith("Career")) {
+                                                return <h3 key={index}><strong>{line}</strong></h3>;
+                                            } else if (line.startsWith("Description:") || line.startsWith("Reason:")) {
+                                                return <ul key={index}><li>{line}</li></ul>;
+                                            } else {
+                                                return null;
+                                            }
+                                        })}
+                                    </div>
+                                ) : (
+                                    <p>No response yet.</p>
+                                )}
+                            </div>
+                            {gptResponse === "" ? <div className="loader2"></div> : null}
                             <br></br>
                         </div>
-                    </div>
-                    <div className="qBoxLarge">
-                        <div style={{textAlign:'left',marginLeft:'50px', marginRight:'50px'}}>
-                            <h2>Here are the career suggestions:</h2>
-                            {gptResponse ? (
-                                <div>
-                                    {gptResponse.split("\n").map((line, index) => {
-                                        if (line.startsWith("Career")) {
-                                            return <h3 key={index}><strong>{line}</strong></h3>;
-                                        } else if (line.startsWith("Description:") || line.startsWith("Reason:")) {
-                                            return <ul key={index}><li>{line}</li></ul>;
-                                        } else {
-                                            return null;
-                                        }
-                                    })}
-                                </div>
-                            ) : (
-                                <p>No response yet.</p>
-                            )}
-                        </div>
-                        {gptResponse === "" ? <div className="loader2"></div> : null}
-                        <br></br>
                     </div>
                 </div>
             )}
