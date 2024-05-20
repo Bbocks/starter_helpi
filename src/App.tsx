@@ -40,9 +40,9 @@ function App() {
     <div className="App">
       <div>
         <header className='navbar'>
-          <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
+          <button disabled={localStorage.getItem("MYKEY") === null} className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
           <button className="button" onClick={() => setStatus( "home" )}>Home</button>
-          <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+          <button disabled={localStorage.getItem("MYKEY") === null} className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
         </header>
         {status === "home" ? (
           <div className="homepage">
@@ -59,8 +59,8 @@ function App() {
               </p>
             </div>
             <div className="content">
-              <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
-              <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
+              <button disabled={localStorage.getItem("MYKEY") === null} className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
+              <button disabled={localStorage.getItem("MYKEY") === null} className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
             <h1 style={{color: 'white'}}>Please make sure to input API key before beginning the basic or detailed career Quizzes</h1>
           </div>
