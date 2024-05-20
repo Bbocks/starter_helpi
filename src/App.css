@@ -101,6 +101,11 @@
   font-size: 18px;
 }
 
+button:disabled {
+  background-color: dimgrey;
+  opacity: .4;
+}
+
 @keyframes gradiate {
   0% {background-color: purple}
   25% {background-color: darkviolet}
