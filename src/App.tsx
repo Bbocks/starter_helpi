@@ -62,6 +62,7 @@ function App() {
               <button className="button" onClick={() => setStatus(  "basic" )}>Basic Assessment</button>
               <button className="button" onClick={() => setStatus( "detailed" )}>Detailed Assessment</button>
             </div>
+            <h1 style={{color: 'white'}}>Please make sure to input API key before beginning the basic or detailed career Quizzes</h1>
           </div>
         ) : status === "basic" ? (
           <div>
